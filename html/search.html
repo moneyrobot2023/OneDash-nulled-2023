@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block">
+			<span>
+				<div>
+					<img src="./img/icons/search.png">
+					<h4>Поиск серверов</h4>
+				</div>
+				<br>
+			</span>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-search">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="position: relative;z-index: 150;">
+				<div class="form" style="max-width: 100%;">
+					<label style="font-size: 21px;display: block;text-align: left;margin-bottom: 0;font-weight: 500;letter-spacing: 1px;">
+						Поисковый запрос
+					</label>
+					<input type="text" placeholder="Ключевые слова..." id="input-for-search-servers" style="width: calc(50% + 30px);max-width: 100%;padding: 4px 15px;font-size: 19px;">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="tags" id="tags-search">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="button-action btn-search-servers" action="search_servers">SEARCH</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block  text-center block-search-result-h" style="opacity: 0;display: none;">
+		<span>
+			<div>
+				<i class="fa fa-server"></i>
+				<h4>Сервера</h4>
+			</div>
+		</span>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-search-result block-search-result-h" style="opacity: 0;display: none;">
+		<div class="servers">
+		</div>
+		<div class="pages" id="pages-search">
+		</div>
+		<div class="btn-download-search">
+			Скопировать всё
+		</div>
+	</div>
+</div>

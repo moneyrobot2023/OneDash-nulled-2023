@@ -1,0 +1,1559 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block">
+			<span>
+				<div>
+					<img src="./img/icons/spam.png">
+					<h4 translate="Spam" translate2="Spam">Рассылка</h4>
+				</div>
+				<br>
+				<span class="change-space-spam">
+					<div translate="Dm spam" translate2="Spam para usuarios en HP">
+						Рассылка пользователям в лс
+					</div>
+					<div class="disable two" translate="Server spam"
+						translate2="Spam en los canales del servidor">
+						Рассылка по каналам серверов
+					</div>
+				</span>
+			</span>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-spam">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label for="select-pars-list" translate="List of users" translate2="Lista de usuarios">Список
+							пользователей</label>
+						<label for="userid-of-user-to-spam" translate="User ID" translate2="ID de usuario">ID
+							пользователя</label>
+						<label for="data-friends-list" translate="Friends" translate2="Amigos">Друзья</label>
+						<i class="fa fa-chevron-right waves-effect" id="change-type-spam-hp"></i>
+						<select id="select-pars-list"></select>
+						<input type="text" id="userid-of-user-to-spam" placeholder="123456789123456789">
+						<div id="data-friends-list" class="waves-effect" translate="Get friends list"
+							translate2="Obtener lista de amigos">Получить список друзей</div>
+						<div id="count-of-friends"></div>
+						<button type="button" class="waves-effect waves-light close-file-btn"
+							id="close-btn-edit-friends" name="button" style="margin-top: -7px;"></button>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label for="select-account" translate="Accounts" translate2="Cuentas">
+							Аккаунты
+						</label>
+						<label
+							style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: -5px;margin-bottom: -25px;letter-spacing: 0.5px;">
+							<vgr translate="Number of threads" translate2="Número de hilos">Количество потоков</vgr>: <v
+								id="count-dis-potoks">0</v>
+						</label>
+						<br>
+						<select id="select-account" multiple tabindex="-1" class="select-account"></select>
+						<div translate="Select all"
+							class="waves-effect block-after-form-input-btn-action select-all-accounts"
+							translate2="Seleccionar todo">
+							Выбрать все
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-to-spam-message"
+					style="padding: 15px 45px;opacity: 1;display: block;transition:.25s;">
+					<label
+						style="font-size: 21px;display: block;text-align: left;margin-bottom: 0;font-weight: 500;letter-spacing: 1px;">
+						<vgr translate="Message text" translate2="Mensaje de texto">Текст сообщения</vgr>
+						<i class="fa fa-eye" id="get-my-spam-texts"></i>
+						<textarea id="hid_text_hist" style="opacity: 0;display:none;margin-top: 0;height: 0;top: 0;position: absolute;z-index:-1;"></textarea>
+						<div class="block-history-text-dis scrol-web">
+							<h4>History</h4>
+						</div>
+					</label>
+					<label
+						style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: 5px;margin-bottom: -5px;letter-spacing: 0.5px;">
+						<vgr translate="Number of randomization options"
+							translate2="Número de opciones de aleatorización">Количество вариантов рандомизации</vgr>:
+						<v id="count-random-of-message">0</v>
+						<span class="help-question-click">
+							<span translate="The number of all possible message options."
+								tooltip="Количество всех возможных вариантов сообщения." flow="up"
+								translate2="El número de todas las opciones de mensaje posibles.">
+								<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+							</span>
+						</span>
+					</label>
+					<textarea class="scrol-web emoji" id="text-to-message-users" translate="Message text..."
+						placeholder="Текст сообщения..." translate2="Mensaje de texto..."></textarea>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-to-spam-message-with-files"
+					style="padding: 15px 45px;margin-top:-70px;">
+					<label
+						style="font-size: 21px;display: block;text-align: left;margin-bottom: 0;font-weight: 500;letter-spacing: 1px;">
+						<vgr translate2="Texto de comentario" translate="Comment text">Текст комментария</vgr>
+						<i class="fa fa-eye" id="get-my-spam-texts-comments"></i>
+						<textarea id="hid_text_hist_comments"
+							style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;z-index:-1;"></textarea>
+						<div class="block-history-text-dis-comments scrol-web" style="left: 120px;">
+							<h4>History</h4>
+						</div>
+					</label>
+					<label
+						style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: 5px;margin-bottom: -5px;letter-spacing: 0.5px;">
+						<vgr translate="Number of randomization options"
+							translate2="Número de opciones de aleatorización">Количество вариантов рандомизации</vgr>:
+						<v id="count-random-of-message-f">0</v>
+						<span class="help-question-click">
+							<span translate="The number of all possible file comment options."
+								tooltip="Количество всех возможных вариантов комментария к файлу." flow="up"
+								translate2="El número de todas las opciones de comentarios de archivo posibles.">
+								<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+							</span>
+						</span>
+					</label>
+					<textarea class="scrol-web emoji" id="text-to-message-users-file" translate="Comment text..."
+						placeholder="Текст комментария..." translate2="Texto de comentario..."></textarea>
+					<label for="file-input-spam" class="waves-effect"
+						style="width: 150px;padding: 5px;letter-spacing: 0;border-radius:5px;">
+						<i class="fa fa-arrow-circle-down"></i>
+						<vgr translate="Select a file" translate2="Seleccione un archivo">Выберите файл</vgr>
+					</label>
+					<br>
+					<div class="type-of-upload-file">
+						<div class="filename">
+						</div>
+					</div>
+					<input type="file" id="file-input-spam" multiple>
+					<input type="hidden" id="file-input-spam-hash">
+					<label style="display:block;margin-top:10px;">
+						<label for="enable-spoiler-files" class="waves-effect">
+							<input type="checkbox" id="enable-spoiler-files">
+						</label>
+						<span style="font-size:21px;font-weight:300;margin-left:4px;cursor:pointer;"
+							translate="Send as a spoiler" translate2="Enviar como spoiler">Отправлять как спойлер</span>
+					</label>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:100%;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Add to blacklist" translate2="Añadir a la lista negra">Добавлять в
+									черный список</vgr>
+								<span class="help-question-click">
+									<span
+										translate="After successfully sending the message, add the user to the application blacklist. The second time the message is not sent to this user."
+										tooltip="После успешной отправки сообщения добавлять пользователя в черный список приложения. Второй раз сообщение этому пользователю не отправится."
+										flow="up"
+										translate2="Después de enviar con éxito el mensaje, agregue el usuario a la lista negra de la aplicación. La segunda vez que el mensaje no se envía a este usuario.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+								<label class="help-question-click" tooltip="Экспортировать чёрный список" translate="Export blacklist" translate2="Exportar lista negra"
+									style="top: 9px;cursor:pointer;">
+									<i class="fa fa-arrow-down waves-effect"
+										style="margin-top: -1px;margin-left: 5px;padding: 7px;border-radius: 50%;"></i>
+										<input type="file" id="export-my-black-list" style="display: none;">
+								</label>
+								<label class="help-question-click" tooltip="Импортировать чёрный список" translate="Import blacklist" translate2="Importar lista negra"
+									style="top: 9px;cursor:pointer;">
+									<i class="fa fa-arrow-up waves-effect"
+										style="margin-top: -1px;margin-left: 5px;padding: 7px;border-radius: 50%;"></i>
+										<input type="file" id="import-my-black-list" style="display: none;">
+								</label>
+								<label class="help-question-click" tooltip="Очистить чёрный список" translate="Clear blacklist" translate2="Borrar lista negra"
+									style="top: 9px;cursor:pointer;" onclick="$('#modal-clear-blacklist').modal('show')">
+									<i class="fa fa-trash-alt waves-effect"
+										style="margin-top: -1px;margin-left: 5px;padding: 7px;border-radius: 50%;"></i>
+								</label>
+							</label>
+							<input type="hidden" id="add-black-list" value="0">
+							<span onclick="enableAddBlackList();" style="margin-top:13px;">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="add-black-list-checkbox" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="form" style="max-width:100%;margin-bottom:-10px;padding-top:0;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Call to users" translate2="Llamar a los usuarios">Звонить пользователям</vgr>
+								<span style="position:  relative;" class="help-question-click">
+									<span
+										translate="Before sending a message, the software will call the user."
+										tooltip="Перед тем как отправить сообщение, софт позвонит пользователю."
+										translate2="Antes de enviar un mensaje, el software llamará al usuario."
+										flow="up">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="check-call-to-user" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Stop on failed logs" translate2="Detener en registros fallidos">Остановка при неудачных логах</vgr>
+								<span style="position:  relative;" class="help-question-click">
+									<span
+										translate="If the number of unsuccessful logs in a row exceeds the specified limit, then spam will stop automatically."
+										tooltip="Если количество неудачных логов подряд превышает указанный лимит, то рассылка остановится автоматически."
+										translate2="Si el número de registros sin éxito en una fila excede el límite especificado, el spam se detendrá automáticamente."
+										flow="up">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="auto-stop-dis" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div id="block-auto-stop-dis" class="form" style="max-width:  100%;margin-bottom:15px;">
+						<vgr translate="Stop spam after" translate2="Detener el spam después">Останавливать спам после</vgr> <input type="text" id="limit-auto-stop-dis" value="15" placeholder="..."> <logs translate="unsuccessful logs in a row" translate2="registros fallidos seguidos">неудачных логов подряд</logs>
+					</div>
+					<br>
+					<div id="blacklist-private-dm-block" class="form" style="max-width:100%;margin-bottom:-120px;margin-top: 10px;padding-top:0;position: relative;z-index: 1000;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Blacklist when private DM" translate2="Emergencia con LAN cerrada">ЧС при закрытом ЛС</vgr>
+								<span style="position:  relative;" class="help-question-click">
+									<span
+										translate="Add user to program blacklist, when user have locked DM channel."
+										tooltip="Добавлять пользователя в черный список приложении, при закрытом лс."
+										translate2="Agregue un usuario a la lista negra de la aplicación, cuando la LAN esté cerrada."
+										flow="up">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="check-blacklist-private-dm" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:45px;">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Log out of servers after spam" translate2="Cerrar sesión en servidores después de spam">Выходить с серверов после спама</vgr>
+								<span style="position:  relative;" class="help-question-click">
+									<span
+										translate="After the end of the distribution, available accounts will leave the servers that were used."
+										tooltip="После окончания рассылки, доступные аккаунты покинут сервера, которые использовались."
+										translate2="Después del final de la distribución, las cuentas disponibles abandonarán los servidores que se utilizaron."
+										flow="up">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="check-exit-from-servers-after-spam" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Multiple messages per user" translate2="Múltiples mensajes para un usuario">Несколько сообщений для одного пользователя</vgr>
+								<span style="position:  relative;" class="help-question-click">
+									<span
+										translate="Send the specified number of messages to one user."
+										tooltip="Отправлять указанное количество сообщений одному пользователю."
+										translate2="Enviar el número especificado de mensajes a un usuario."
+										flow="up">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="more-message-to-user" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div id="block-more-message-to-user" class="form" style="max-width:  100%;">
+						<vgr translate="Send" translate2="Enviar">Отправлять по</vgr> <input type="text" id="count-of-more-message-to-user" value="1" placeholder="..."> <mes translate="message" translate2="mensaje">сообщению</mes> <vgr translate="to each user" translate2="a cada usuario">каждому пользователю.</vgr>
+					</div>
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Automatic account change" translate2="Cambio automático de cuenta">
+									Автоматическая смена аккаунтов</vgr>
+								<span style="position:  relative;" class="help-question-click">
+									<span
+										translate="After the specified number of messages sent from the account or after blocking the account, the accounts will change."
+										tooltip="После указанного количества отправленных сообщений с аккаунта или после блокировки аккаунта будут меняться аккаунты."
+										flow="up"
+										translate2="Después del número especificado de mensajes enviados desde la cuenta o después de bloquear la cuenta, las cuentas cambiarán.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<input type="hidden" id="auto-change-accs" value="0">
+							<span onclick="enableAutoChangeAccs();">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="auto-change-accs-checkbox" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="change-accs-block">
+						<div class="form" style="max-width:  100%;margin-bottom:  -15px;">
+							<label for="count-of-success-messages-change" translate="Number of sent messages"
+								style="font-size: 19px;" translate2="Numero de mensajes enviados">
+								Количество отправляемых сообщений
+							</label>
+							<input style="text-align: center;width: 60px;margin-left: 20px;" maxlength="100" type="text"
+								id="count-of-success-messages-change" placeholder="...">
+							<br>
+							<span id="count-of-will-send-messages"
+								style="font-size:  17px;transition:.25s;height:24px;font-weight: 300;display:  block;">
+								<vgr translate="Just go" translate2="Solo vamos">Всего отправится</vgr>: <pro
+									translate="0 messages" translate2="0 Mensajes">0 сообщений</pro>
+							</span>
+						</div>
+						<div class="form">
+							<label for="select-account-change" translate="Accounts to change"
+								translate2="Cuentas para cambiar">
+								Аккаунты для смены
+							</label>
+							<br>
+							<select id="select-account-change" multiple tabindex="-1"
+								class="select-account select-account-change"></select>
+							<div translate="Select all"
+								class="waves-effect block-after-form-input-btn-action select-all-change-accounts"
+								translate2="Seleccionar todo">
+								Выбрать все
+							</div>
+						</div>
+						<div class="form">
+							<span style="display: flex;">
+								<label>
+									<vgr translate="Change accounts one by one"
+										translate2="Cambiar cuentas una por una">Менять аккаунты поочередно</vgr>
+									<span style="position:  relative;" class="help-question-click">
+										<span
+											translate="From each account, the available number of messages will be sent alternately. Newsletter is completed only when all selected accounts are blocked."
+											tooltip="С каждого аккаунта будет поочередно отсылаться указанное количество сообщений. Рассылка завершится только тогда, когда все выбранные аккаунты будут заблокированы."
+											flow="up"
+											translate2="Desde cada cuenta, el número de mensajes disponibles se enviará alternativamente. El boletín informativo se completa solo cuando todas las cuentas seleccionadas están bloqueadas.">
+											<i class="fa fa-question-circle"></i>
+										</span>
+									</span>
+								</label>
+								<span>
+									<label class="dThemeSwitch">
+										<input type="checkbox" id="auto-turn-accs-checkbox" style="display: none;">
+										<span class="slider round"></span>
+									</label>
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Delay between messages (seconds)"
+									translate2="Retraso entre mensajes (segundos)">Задержка (сек)</vgr>
+							</label>
+							<input type="hidden" id="delay-messages" value="0">
+							<span onclick="enableDelayMessage();">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="delay-messages-checkbox" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="delay-spam-block">
+						<div class="form" style="max-width:  100%;margin-bottom:  -15px;">
+							<label for="from-secs-delay" translate="From" style="font-size: 19px;" translate2="Desde">
+								От
+							</label>
+							<input style="text-align: center;width: 60px;margin-left: 20px;" maxlength="100" type="text"
+								id="from-secs-delay" placeholder="...">
+							<label for="to-secs-delay" translate="To" style="font-size: 19px;margin-left:  25px;"
+								translate2="A">
+								До
+							</label><input style="text-align: center;width: 60px;margin-left: 20px;" maxlength="100"
+								type="text" id="to-secs-delay" placeholder="..."></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Add users as friends" translate2="Agregar usuarios como amigos">
+									Добавлять пользователей в друзья</vgr>
+							</label>
+							<span>
+								<label class="dThemeSwitch" style="position: relative;z-index: 100;">
+									<input type="checkbox" id="add-to-friend-checkbox" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label translate="Delete messages" translate2="Eliminar mensajes">
+								Удалять сообщения
+							</label>
+							<span>
+								<label class="dThemeSwitch" style="position: relative;z-index: 100;">
+									<input type="checkbox" id="check-delete-messages-dis" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div id="delete-messages-dis-block" class="form">
+						<label for="delete-messages-dis">
+							<span translate="Delete messages after" translate2="Eliminar mensajes después de">Удалять сообщения после</span>
+							<input type="text" id="delete-messages-dis" placeholder="...">
+							<pro translate="second" translate2="segundos">секунд</pro>
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Receive message alerts" translate2="Recibe alertas de mensajes">Получать
+									оповещения о сообщениях</vgr>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="noty-of-msgs-checkbox" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+						<span id="before-block-sound-notys">
+							<label>
+								<span style="font-size: 19px;font-weight: 300;" translate="Sound alerts"
+									translate2="Alertas sonoras">Звуковые оповещения</span>
+								<label class="waves-effect"
+									style="width: calc(1px + 39px);height: calc(1px + 39px);text-align:  center;border-radius:  100%;margin: 0;margin-top: 10px;margin-bottom: -14px;margin-left: 4px;">
+									<input type="checkbox" id="sound-noty-of-msgs-checkbox"
+										style="margin-left: 5px;margin-top: 7px;">
+								</label>
+							</label>
+						</span>
+						<span id="before-block-notend-notys">
+							<label>
+								<span style="font-size: 19px;font-weight: 300;"
+									translate="Receive notifications after stopping"
+									translate2="Recibe notificaciones después de parar">Получать уведомления после
+									остановки</span>
+								<label class="waves-effect"
+									style="width: calc(1px + 39px);height: calc(1px + 39px);text-align:  center;border-radius:  100%;margin: 0;margin-top: 10px;margin-bottom: -14px;margin-left: 4px;">
+									<input type="checkbox" id="notend-noty-of-msgs-checkbox"
+										style="margin-left: 5px;margin-top: 7px;">
+								</label>
+							</label>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:-10px;margin-bottom: 15px;">
+					<div class="form" style="max-width:  100%;">
+						<span style="display: flex;margin-top:  5px;">
+							<label>
+								<vgr translate="Auto response" translate2="Contestador automático">Автоответчик</vgr>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="autoanswer-check" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+						<div id="block-autoanswer">
+							<div id="delay-autoanswer-block">
+								<vgr translate="Delay before sending (seconds)"
+									translate2="Retraso antes de enviar (segundos)">Задержка перед отправкой (секунды)
+								</vgr>
+								<input type="text" id="delay-autoanswer" placeholder="...">
+							</div>
+							<div style="margin: 15px 0;">
+								<label translate="Auto response scripts" translate2="Guiones de respuesta automática">
+									Сценарии ответов
+								</label>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="answer-rules-enable" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</div>
+							<div id="answer-rules-block">
+								<div id="answer-rules-settings" class="waves-effect" translate="Customize" translate2="Personalizar">
+									Настроить
+								</div>
+							</div>
+							<div id="text-autoanswer-block">
+								<label
+									style="font-size: 19px;display: block;text-align: left;margin-bottom: -5px;font-weight: 500;letter-spacing: 1px;">
+									<vgr translate="Message text" translate2="Mensaje de texto">Текст сообщения</vgr>
+									<i class="fa fa-eye" id="get-my-spam-texts-autoanswer"></i>
+									<textarea id="hid_text_hist_autoanswer"
+										style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;z-index:-1;"></textarea>
+									<div class="block-history-text-dis-autoanswer scrol-web" style="top:auto;">
+										<h4>History</h4>
+									</div>
+									<label
+										style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: 5px;margin-bottom: -5px;letter-spacing: 0.5px;">
+										<vgr translate="Number of randomization options"
+											translate2="Número de opciones de aleatorización">Количество вариантов
+											рандомизации</vgr>: <v id="count-random-of-message-autoanswer">0</v>
+										<span class="help-question-click">
+											<span translate="The number of all possible message options."
+												tooltip="Количество всех возможных вариантов сообщения." flow="up"
+												translate2="El número de todas las opciones de mensaje posibles.">
+												<i class="fa fa-question-circle"
+													style="font-size: 14px;margin-left: 10px;"></i>
+											</span>
+										</span>
+									</label>
+								</label>
+								<textarea class="scrol-web emoji" id="text-autoanswer" translate="Message text..."
+									translate2="Texto del mensaje..." placeholder="Текст сообщения..."></textarea>
+								<label class="waves-effect" id="add-files-to-answer-msg">
+									<i class="fa fa-arrow-circle-down"></i>
+									<vgr translate="Attach files" translate2="Adjuntar archivos">Прикрепить файлы</vgr>
+									<input type="file" id="file-input-for-autoanswer" multiple>
+								</label>
+								<div id="type-of-upload-file-answer">
+									<div class="filename">
+										<div class="block-name"></div>
+										<button type="button" class="close waves-effect remove-file-block-spam"
+											style="border-radius: 50%;padding: 15px !important;margin-top: 0px !important;"></button>
+									</div>
+								</div>
+								<label style="display:block;margin-top:10px;text-align:center;">
+									<label for="enable-spoiler-files-autoanswer" class="waves-effect">
+										<input type="checkbox" id="enable-spoiler-files-autoanswer">
+									</label>
+									<span style="font-size:19px;font-weight:300;cursor:pointer;"
+										translate="Send as a spoiler" translate2="Enviar como spoiler">Отправлять как
+										спойлер</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="button-action waves-effect btn-start-spam" action="start_spam"
+						style="position:relative;z-index:99;">START</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pre-btn-pause-spam">
+					<div class="button-action waves-effect btn-pause-spam" action="pause_spam"
+						style="position:relative;z-index:99;">PAUSE</div>
+				</div>
+				<div id="count-spam-message" translate="0 messages" translate2="0 Mensajes">0 сообщений</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="block-before-change-spam-type">
+					<div class="bottom-block-for-hover" style="margin-top:-45px;">
+						<span translate="Spam type" translate2="Tipo de spam">
+							Тип рассылки
+						</span>
+					</div>
+					<span style="float: left;margin: 0;" class="block-type-spamming disable">
+						<input type="radio" class="hidden radio-from-block-for-hover" from="type-spamming"
+							id="first-radio-block-type-spamming" name="inputs" types="messages" checked>
+						<label class="entry" for="first-radio-block-type-spamming">
+							<div class="circle"></div>
+							<div class="entry-label" style="margin-left: 25px;">
+								<vgr translate="Sending messages" translate2="Enviando mensajes">Отправка сообщений
+								</vgr>
+								<span class="help-question-click">
+									<span translate="Sending text messages to users."
+										tooltip="Отправка текстовых сообщений пользователям." flow="left"
+										translate2="Envío de mensajes de texto a usuarios.">
+										<i class="fa fa-question-circle"
+											style="font-size: 14px;margin-left: 10px;position:absolute;margin-top:5px;"></i>
+									</span>
+								</span>
+							</div>
+						</label>
+						<input type="radio" class="hidden radio-from-block-for-hover" from="type-spamming"
+							id="second-radio-block-type-spamming" name="inputs" types="files">
+						<label class="entry" for="second-radio-block-type-spamming">
+							<div class="circle"></div>
+							<div class="entry-label">
+								<vgr translate="Sending files" translate2="Enviando archivos">Отправка файлов</vgr>
+								<span class="help-question-click">
+									<span
+										translate="Sending any files (up to 8MB) to users, with the ability to add comments."
+										tooltip="Отправка любых файлов (до 8МБ) пользователям, с возможностью добавления комментариев."
+										flow="left"
+										translate2="Enviar cualquier archivo (hasta 8 MB) a los usuarios, con la posibilidad de agregar comentarios.">
+										<i class="fa fa-question-circle"
+											style="font-size: 14px;margin-left: 10px;position:absolute;margin-top:5px;"></i>
+									</span>
+								</span>
+							</div>
+						</label>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block block-spam block-spam-hist "
+			style="opacity: 0; display: none;">
+			<span>
+				<div>
+					<i class="fa fa-clock"></i>
+					<h4 translate="History" translate2="Historia">История</h4>
+				</div>
+			</span>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-spam block-spam-hist "
+			style="opacity: 0; display: none;">
+			<div class="scrol-web block-before-table block-before-table-spam">
+				<table id="table-dis" style="transition: .25s;">
+					<thead>
+						<tr>
+							<th>
+								#
+							</th>
+							<th></th>
+							<th translate="Spam type" translate2="Tipo de spam">
+								Тип рассылки
+							</th>
+							<th translate="Date" translate2="Fecha">
+								Дата
+							</th>
+							<th translate="Logs" translate2="Registros">Логи</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-spam-channels"
+			style="display: none;opacity: 0;">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form invite-to-server-dis-channels" style="max-width: 100%;" type="text">
+						<div id="block-name-server-dis-channels">
+							<img src="./img/assets/undefind-avatar.png">
+							<span></span>
+						</div>
+						<div id="block-invite-dis-channels">
+							<label for="select-pars-list-channels" translate="Invite to server">
+								Инвайт на сервер
+							</label>
+							<br>
+							<input type="text" id="invite-to-dis-channels" placeholder="https://discord.gg/...">
+						</div>
+						<div class="waves-effect block-after-form-input-btn-action pars-channels-from-server"
+							translate="Parse available channels" translate2="Analizar canales disponibles">
+							Спарсить доступные каналы
+						</div>
+					</div>
+					<div class="form invite-to-server-dis-channels" style="max-width: 100%;" type="voice">
+						<div id="block-name-server-dis-channels-voice">
+							<img src="./img/assets/undefind-avatar.png">
+							<span></span>
+						</div>
+						<div id="block-invite-dis-channels-voice">
+							<label for="select-pars-list-channels-voice" translate="Invite to server">
+								Инвайт на сервер
+							</label>
+							<br>
+							<input type="text" id="invite-to-dis-channels-voice" placeholder="https://discord.gg/...">
+						</div>
+						<div class="waves-effect block-after-form-input-btn-action pars-channels-from-server-voice"
+							translate="Parse available channels" translate2="Analizar canales disponibles">
+							Спарсить доступные каналы
+						</div>
+					</div>
+					<span id="count-of-pars-dis-channels"></span>
+					<span id="count-of-pars-dis-channels-voice"></span>
+					<button type="button" class="waves-effect waves-light close-file-btn hide-close-file-btn"
+						id="close-btn-invite-dis-channels" name="button" style="margin-top:-80px;margin-right:-15px;position: relative;z-index:100;"></button>
+					<button type="button" class="waves-effect waves-light close-file-btn hide-close-file-btn"
+						id="close-btn-invite-dis-channels-voice" name="button" style="margin-top:-100px;position: relative;z-index:100;"></button>
+					<div style="width: 150%;display: inline-block;float:  left;margin-bottom: 15px;" class="form"
+						id="before-block-verify-server">
+						<span>
+							<label style="font-size: 19px;">
+								<vgr translate="Server verification" translate2="Verificación del servidor">Верификация
+									на сервере</vgr>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="enabler_channel_verification" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+						<div id="channel-verify-block">
+							<label for="channel-verify-channel-id">
+								<vgr translate="Channel ID" translate2="Identificación del canal">ID канала</vgr> (<w
+									translate='<a class="open-in-browser" url="https://gyazo.com/b0102ee258dccbc6face0dea671212f1">where to get?</a>'
+									translate2='<a class="open-in-browser" url="https://gyazo.com/7dcbada8878cb8205a71e2b96c9817b8">donde conseguir</a>'>
+									<a class="open-in-browser" url="https://gyazo.com/0504b6a21136a514b3ab2fb02b119d10">где взять?</a></w>):
+							</label>
+							<input type="text" id="channel-verify-channel-id" placeholder="...">
+							<br>
+							<label for="channel-verify-message-id">
+								<vgr translate="Message ID" translate2="Identificación del mensaje">ID сообщения</vgr> (
+								<w translate='<a class="open-in-browser" url="https://gyazo.com/412e4e7a6e47b65b00c6f8440749b1f7">where to get?</a>'
+									translate2='<a class="open-in-browser" url="https://gyazo.com/9756d0e8526b2023c94ee76949856dc8">donde conseguir</a>'>
+									<a class="open-in-browser"
+										url="https://gyazo.com/c259a38baefb23d521bbb4af02da605d">где взять?</a></w>):
+							</label>
+							<input type="text" id="channel-verify-message-id" placeholder="..."
+								style="margin-top: 15px;">
+						</div>
+					</div>
+					<div id="join-to-voice-channels-block">
+						<label class="f">
+							<label class="waves-effect">
+								<input type="checkbox" id="join-to-voice-channels">
+							</label>
+							<vgr translate="Join to voice channels" translate2="Únete a canales de voz">Заходить в
+								голосовые каналы</vgr>
+						</label>
+						<span class="help-question-click">
+							<span
+								translate="Each account will be connected to voice channels, while it will be possible."
+								tooltip="Каждый аккаунт будет подключаться к голосовым каналам, пока это будет возможно."
+								flow="up"
+								translate2="Cada cuenta estará conectada a canales de voz, mientras que será posible.">
+								<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+							</span>
+						</span>
+					</div>
+					<div id="exit-from-servers-channels-block">
+						<label class="f">
+							<label class="waves-effect">
+								<input type="checkbox" id="exit-from-server-spam-channels">
+							</label>
+							<vgr translate="Log out of server after spam has ended" translate2="Cerrar sesión en el servidor después de que finalice el spam">Выйти с сервера после окончания спама</vgr>
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label for="select-account-channels" translate="Account">
+							Аккаунты
+						</label>
+						<label
+							style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: -5px;margin-bottom: -30px;letter-spacing: 0.5px;">
+							<vgr translate="Number of threads" translate2="Número de hilos">Количество потоков</vgr>: <v
+								id="count-dis-potoks-channels">0</v>
+						</label>
+						<br>
+						<select multiple id="select-account-channels" tabindex="-1" class="select-account"></select>
+						<div translate="Select all"
+							class="waves-effect block-after-form-input-btn-action select-all-accounts-channels">
+							Выбрать все
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-to-spam-message-channels"
+					style="padding: 15px 45px;opacity: 1;display: block;margin-top:-35px;">
+					<label
+						style="font-size: 21px;display: block;text-align: left;margin-bottom: 0;font-weight: 500;letter-spacing: 1px;">
+						<vgr translate="Message text" translate2="Mensaje de texto">Текст сообщения</vgr>
+						<i class="fa fa-eye" id="get-my-spam-texts-channels"></i>
+						<textarea id="hid_text_hist_channels"
+							style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;z-index:-1;"></textarea>
+						<div class="block-history-text-dis-channels scrol-web">
+							<h4>History</h4>
+						</div>
+					</label>
+					<label
+						style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: 5px;margin-bottom: -5px;letter-spacing: 0.5px;">
+						<vgr translate="Number of randomization options">Количество вариантов рандомизации</vgr>: <v
+							id="count-random-of-message-channels">0</v>
+						<span class="help-question-click">
+							<span tooltip="Количество всех возможных вариантов сообщения."
+								translate="The number of all possible message options." flow="up">
+								<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+							</span>
+						</span>
+					</label>
+					<textarea id="text-to-message-channels" class="emoji" translate="Message text..."
+						translate2="Texto del mensaje..." placeholder="Текст сообщения..."></textarea>
+					<label class="waves-effect" id="add-files-to-channels-msg">
+						<i class="fa fa-arrow-circle-down"></i>
+						<vgr translate="Attach files" translate2="Adjuntar archivos">Прикрепить файлы</vgr>
+						<input type="file" id="file-input-for-channels" multiple>
+					</label>
+					<div id="type-of-upload-file-channels" style="margin-top:165px;">
+						<div class="filename">
+							<div class="block-name"></div>
+							<button type="button" class="close waves-effect remove-file-block-spam-channels"
+								style="border-radius: 50%;padding: 15px !important;margin-top: 0px !important;"></button>
+						</div>
+					</div>
+					<label style="display:block;margin-top:10px;text-align:center;">
+						<label for="enable-spoiler-files-channels" class="waves-effect">
+							<input type="checkbox" id="enable-spoiler-files-channels">
+						</label>
+						<span style="font-size:19px;font-weight:300;cursor:pointer;" translate="Send as a spoiler"
+							translate2="Enviar como spoiler">Отправлять как спойлер</span>
+					</label>
+				</div>
+				<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-type-speed-spamming" style="padding: 15px 45px;">
+	<label style="font-size: 21px;display: block;text-align: left;margin-bottom: 0;font-weight: 500;letter-spacing: 1px;">
+		Скорость рассылки
+	</label>
+	<div class="block-before-range">
+		<div class="slider slider-horizontal" id=""><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 50%;"></div><div class="slider-track-high" style="right: 0px; width: 50%;"></div></div><div class="tooltip tooltip-main top hide" role="presentation" style="left: 50%;"><div class="tooltip-arrow"></div><div class="tooltip-inner">2</div></div><div class="tooltip tooltip-min top hide" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top hide" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-tick-label-container"><div class="slider-tick-label">Быстро</div><div class="slider-tick-label">Оптимально</div><div class="slider-tick-label">Медленно</div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="1" aria-valuemax="3" aria-valuenow="2" tabindex="0" style="left: 50%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" tabindex="0" style="left: 0%;"></div></div><input type="range" id="value-type-speed-spam-channels" min="1" max="3" step="1" value="2" data-value="2" style="display: none;">
+	</div>
+</div> -->
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;" id="delay-messages-channels-block">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Mass mention users" translate2="Usuarios de etiquetado masivo">Упоминание пользователей сервера</vgr>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="mass-tagging-users-check" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div id="mass-tagging-users-block" class="form">
+						<label for="mass-tagging-users-count" translate="Tag" translate2="Etiqueta" style="font-weight:300;font-size: 17px;">
+							Отмечать по
+						</label>
+						<input type="text" id="mass-tagging-users-count" placeholder="...">
+						<label for="mass-tagging-users-count" style="display:inline;font-weight:300;font-size:17px;">
+							<pro translate="users" translate2="de usuarios">пользователей</pro>
+							<span translate="per message" translate2="en el mensaje">
+								в сообщении
+							</span>
+						</label>
+						<br>
+						<label for="mass-tagging-users-text" translate="Text for message" translate2="Texto para mensaje">
+							Текст к сообщениям
+						</label>
+						<input type="text" id="mass-tagging-users-text" placeholder="...">
+					</div>
+				</div>
+			</div>
+			<div class="row">				
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;" id="delete-messages-dis-channels-block">
+						<span style="display: flex;">
+							<label translate="Delete messages" translate2="Eliminar mensajes">
+								Удалять сообщения
+							</label>
+							<span>
+								<label class="dThemeSwitch" style="position: relative;z-index: 100;">
+									<input type="checkbox" id="check-delete-messages-dis-channels" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div id="delete-messages-dis-block-channels" class="form">
+						<label for="delete-messages-dis-channels">
+							<span translate="Delete messages after" translate2="Eliminar mensajes después de">Удалять сообщения после</span>
+							<input type="text" id="delete-messages-dis-channels" placeholder="...">
+							<pro translate="second" translate2="segundos">секунд</pro>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="delay-spam-block-channels">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;" id="delay-messages-channels-block">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Delay (sec)" translate="Retraso (seg.)">Задержка (сек)</vgr>
+							</label>
+							<input type="hidden" id="delay-messages-channels" value="0">
+							<span onclick="enableDelayMessageChannels();">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="delay-messages-checkbox-channels" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="delay-spam-block-channels">
+						<div class="form" style="max-width:  100%;margin-bottom:  -15px;">
+							<label for="from-secs-delay-channels" translate="From" style="font-size: 19px;">
+								От
+							</label>
+							<input style="text-align: center;width: 60px;margin-left: 20px;" maxlength="100" type="text"
+								id="from-secs-delay-channels" placeholder="...">
+							<label for="to-secs-delay-channels" translate="To"
+								style="font-size: 19px;margin-left:  25px;">
+								До
+							</label><input style="text-align: center;width: 60px;margin-left: 20px;" maxlength="100"
+								type="text" id="to-secs-delay-channels" placeholder="..."></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="message-limit-dis-channels-block">
+					<div class="form" style="max-width:  100%;margin-bottom: -10px;">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Message limits" translate2="Límite de mensaje">Ограничение сообщений</vgr>
+							</label>
+							<span>
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="limit-msgs-checkbox-channels" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div id="limit-msgs-channels">
+						<div class="form" style="max-width:  100%;margin-bottom:  -15px;">
+							<label style="font-size: 17px;font-weight:  300;">
+								<div>
+									<span>
+										<vgr translate="Send by" translate2="Enviar por">Отправлять по</vgr> <input
+											type="text" style="width:  50px;margin: 0 5px;text-align:  center;"
+											placeholder="...">
+										<vgr translate="messages from account" translate2="mensajes de cuenta">сообщений
+											с аккаунта</vgr>
+									</span>
+								</div>
+							</label>
+							<br>
+							<span id="count-of-send-msgs-dis-channels"
+								style="display:  block;margin-top:  10px;font-size: 18px;font-weight:  300;"
+								translate="Total sent: 0 messages" translate2="Total enviado: 0 mensajes">Всего
+								отправится: 0 сообщений</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="button-action waves-effect btn-start-spam-channels" action="start_spam">
+						START
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pre-btn-pause-spam-channels">
+					<div class="button-action waves-effect btn-pause-spam-channels" action="pause_spam">PAUSE</div>
+				</div>
+				<div id="count-spam-message-channels" translate="0 messages" translate2="0 publicaciones">0 сообщений
+				</div>
+			</div>
+			<div class="bottom-block-for-hover-channels" style="margin-top:-45px;">
+				<span translate="Spam type" translate2="Tipo de spam" id="">
+					Тип рассылки
+				</span>
+			</div>
+			<span style="float: left;margin: 0;" class="block-type-spamming-channels disable">
+				<input type="radio" class="hidden radio-from-block-for-hover-channels"
+					id="first-radio-block-type-spamming-channels" name="inputs" types="text" checked>
+				<label class="entry" for="first-radio-block-type-spamming-channels">
+					<div class="circle"></div>
+					<div class="entry-label">
+						<vgr translate="Text channels" translate2="Alimentaciones de texto">Текстовые каналы
+						</vgr>
+						<span class="help-question-click">
+							<span translate="Sending messages to server text channels."
+								tooltip="Отправка сообщений в текстовые каналы сервера." flow="left"
+								translate2="Enviar mensajes a los canales de texto del servidor.">
+								<i class="fa fa-question-circle"
+									style="font-size: 14px;margin-left: 10px;position:absolute;margin-top:5px;"></i>
+							</span>
+						</span>
+					</div>
+				</label>
+				<input type="radio" class="hidden radio-from-block-for-hover-channels"
+					id="second-radio-block-type-spamming-channels" name="inputs" types="voice">
+				<label class="entry" for="second-radio-block-type-spamming-channels">
+					<div class="circle"></div>
+					<div class="entry-label">
+						<vgr translate="Voice channels" translate2="Canales de voz">Голосовые каналы</vgr>
+						<span class="help-question-click">
+							<span
+								translate="Connect to all available voice channels."
+								tooltip="Подключение ко всем доступным голосовым каналам."
+								flow="left"
+								translate2="Conéctese a todos los canales de voz disponibles.">
+								<i class="fa fa-question-circle"
+									style="font-size: 14px;margin-left: 10px;position:absolute;margin-top:5px;"></i>
+							</span>
+						</span>
+					</div>
+				</label>
+			</span>
+		</div>
+		<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block block-spam-channels block-spam-hist-channels" style="display: none;opacity: 0;">
+			<span>
+				<div>
+					<i class="fa fa-clock"></i>
+					<h4 translate="History">История</h4>
+				</div>
+			</span>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-spam-channels block-spam-hist-channels" style="display: none;opacity: 0;">
+			<div class="scrol-web block-before-table block-before-table-spam-channels">
+				<textarea id="_hiddenCopyText__2y" style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+				<table id="table-dis-channels">
+					<thead>
+						<tr>
+							<th>
+								#
+							</th>
+							<th translate="Count">
+								Количество
+							</th>
+							<th translate="Guild">
+								Сервер
+							</th>
+							<th></th>
+							<th translate="Date">
+								Дата
+							</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div> -->
+	</div>
+</div>
+
+<div id="modal-edit-black-list" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Editing the blacklist" translate2="Editar la lista negra">
+					Редактирование чёрного списка</h4>
+			</div>
+			<div class="modal-body">
+				<div class="input-get-list-channels" style="display: block;opacity:1;">
+					<textarea></textarea>
+				</div>
+				<div class="action-get-channels-to-pars-list"
+					style="margin-top: 10px;font-size: 18px;height: auto;opacity: 1;display: block;">
+					<span class="modal-close-btn">
+						<i class="fa fa-times-circle"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</span>
+					<span style="float: right;" id="save-edit-black-list">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-logs-spam" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="View spam logs" translate2="Ver registros de spam">Просмотр логов
+					рассылки</h4>
+			</div>
+			<div class="modal-body">
+				<div class="count-logs">
+					<span>
+						<vgr translate="Total" translate2="Total">Всего</vgr>: <vgr translate="0 logs"
+							translate2="0 registros">0 логов</vgr>
+					</span>
+					<v translate="(0 messages)" translate2="(0 Mensajes)">(0 сообщений)</v>
+				</div>
+				<textarea id="_hiddenCopyTe213xt_"
+					style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+				<div class="list-logs-spam scrol-web">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-logs-spam-channels" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="View spam logs" translate2="Ver registros de spam">Просмотр логов
+					рассылки</h4>
+			</div>
+			<div class="modal-body">
+				<div class="count-logs-channels">
+					<span>
+						<vgr translate="Total" translate2="Total">Всего</vgr>: <vgr translate="0 logs"
+							translate2="0 registros">0 логов</vgr>
+					</span>
+					<v translate="(0 messages)" translate2="(0 Mensajes)">(0 сообщений)</v>
+				</div>
+				<div class="list-logs-spam-channels scrol-web">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-delete-spam-list" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Deleting mailing history"
+					translate2="Eliminar el historial de correo">Удаление истории рассылки</h4>
+			</div>
+			<div class="modal-body">
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" data-dismiss="modal">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect">
+						<i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-edit-dis-channels-list" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Editing the channels list" translate2="Editar lista de canales">
+					Редактирование списка каналов</h4>
+			</div>
+			<div class="modal-body">
+				<div class="search-dis-channels">
+					<input type="text" placeholder="Имя канала..." translate="Channel name..."
+						translate2="Nombre del canal...">
+				</div>
+				<div class="select-editer-channels scrol-web"></div>
+				<div translate="Select all" translate2="Seleccionar todo"
+					class="waves-effect block-after-form-input-btn-action editer-sel-channels">
+					Выбрать все
+				</div>
+				<span id="count-selects-channels">Выбрано: 0 каналов</span>
+				<div class="action-delete-channels">
+					<span><i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Eliminar">Удалить</vgr>
+					</span>
+				</div>
+				<div class="action-rand-channels">
+					<span translate="Randomize" translate2="Aleatorizar">Рандомизировать</span>
+				</div>
+				<div class="action-get-channels-to-pars-list"
+					style="margin-top: 10px;font-size: 18px;height: auto;opacity: 1;display: block;">
+					<span class="modal-close-btn">
+						<i class="fa fa-times-circle"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</span>
+					<span style="float: right;" id="save-edit-dis-channels">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Guardar">Сохранить</vgr>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-edit-dis-friends-list" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Friend List Editing" translate2="Edición de la lista de amigos">
+					Редактирование списка друзей</h4>
+			</div>
+			<div class="modal-body">
+				<div class="search-dis-list-friends">
+					<input type="text" placeholder="Имя пользователя..." translate="Username..."
+						translate2="Nombre de usuario...">
+				</div>
+				<div class="select-editer-friends scrol-web"></div>
+				<div translate2="Seleccionar todo" translate="Select all"
+					class="waves-effect block-after-form-input-btn-action editer-sel-friends">
+					Выбрать все
+				</div>
+				<span id="count-select-friends">Выбрано: 0 пользователей</span>
+				<div class="action-delete-friends">
+					<span><i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Eliminar">Удалить</vgr>
+					</span>
+				</div>
+				<div class="action-rand-friends">
+					<span translate="Randomize" translate2="Aleatorizar">Рандомизировать</span>
+				</div>
+				<div class="action-get-friends-to-list"
+					style="margin-top: 10px;font-size: 18px;height: auto;opacity: 1;display: block;">
+					<span class="modal-close-btn">
+						<i class="fa fa-times-circle"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</span>
+					<span style="float: right;" id="save-edit-friends-list">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Guardar">Сохранить</vgr>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-answer-rules" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Editing scripts for an auto response" translate2="Edición de guiones para un contestador automático">
+					Редактирование сценариев для автоответчика
+				</h4>
+			</div>
+			<div class="modal-body">
+				<h3 style="text-align: center;margin-top: 0;" translate="List of rules" translate2="Lista de reglas">Список правил</h3>
+				<span id="create-new-rule" class="waves-effect" translate="Create" translate2="Crear">Создать</span>
+				<div id="block-edit-active-answer-rules" class="scrol-web">
+					<label class="answer-rule-list" hash="123">
+						<span class="name">
+							Правило №1
+						</span>
+						<input type="checkbox">
+						<i class="fa fa-trash-alt delete-answer-rule waves-effect" hash="12345"></i>
+						<i class="fa fa-cog edit-answer-rule waves-effect" hash="123"></i>
+					</label>
+					<label class="answer-rule-list" hash="1234">
+						<span class="name">
+							Правило №2
+						</span>
+						<input type="checkbox">
+						<i class="fa fa-trash-alt delete-answer-rule waves-effect" hash="1234"></i>
+						<i class="fa fa-cog edit-answer-rule waves-effect" hash="1234"></i>
+					</label>
+					<label class="answer-rule-list" hash="12345">
+						<span class="name">
+							Правило №3
+						</span>
+						<input type="checkbox">
+						<i class="fa fa-trash-alt delete-answer-rule waves-effect" hash="12345"></i>
+						<i class="fa fa-cog edit-answer-rule waves-effect" hash="12345"></i>
+					</label>
+				</div>
+				<div id="count-of-active-answer-rules"><vgr translate="Active" translate2="Activa">Активно</vgr>: <v>1 правило</v></div>
+				<h3 style="text-align: center;" translate="List of messages" translate2="Lista de mensajes">Список сообщений</h3>
+				<span id="create-new-answer-message" class="waves-effect" translate="Create" translate2="Crear">Создать</span>
+				<div id="answer-rules-messages-list" class="scrol-web">
+					<div class="answer-message">
+						<span class="name">
+							Сообщение №1
+						</span>
+						<i class="fa fa-trash-alt delete-answer-message waves-effect" hash="123"></i>
+						<i class="fa fa-cog edit-answer-message waves-effect" hash="123"></i>
+					</div>
+					<div class="answer-message">
+						<span class="name">
+							Сообщение №2
+						</span>
+						<i class="fa fa-trash-alt delete-answer-message waves-effect" hash="1234"></i>
+						<i class="fa fa-cog edit-answer-message waves-effect" hash="1234"></i>
+					</div>
+					<div class="answer-message">
+						<span class="name">
+							Сообщение №3
+						</span>
+						<i class="fa fa-trash-alt delete-answer-message waves-effect" hash="12345"></i>
+						<i class="fa fa-cog edit-answer-message waves-effect" hash="12345"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-create-answer-rule" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Rule for an auto response" translate2="Regla para contestador automático">
+					Правило для автоответчика
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form"
+					style="margin: 0 auto;padding:  0;margin-bottom: 25px;max-width: 100%;text-align:  center;">
+					<label>
+						<vgr translate="Name" translate2="Nombre" style="display:  block;">Имя</vgr>
+						<input placeholder="Сообщение #1" translate="Message #1" translate2="Mensaje #1" type="text"
+							id="name-of-new-answer-rule" class="text-center">
+					</label>
+				</div>
+				<h3 style="margin-top:0;text-align:center;margin-bottom:20px;" translate="If the user's message..."
+					translate2="Si el mensaje del usuario...">Если сообщение пользователя...</h3>
+				<div id="block-to-select-operators-answer" class="form">
+					<div class="answer-rule-creater">
+						<select class="nice_select">
+							<option value="indexof" translate="Contains" translate2="Contiene">Содержит</option>
+							<option value="!indexof" translate="Does not contain" translate2="No contiene">Не содержит
+							</option>
+							<option value="equally" translate="Equally" translate2="Igualmente">Равно</option>
+							<option value="!equally" translate="Not equal" translate2="No igual">Не равно</option>
+						</select>
+						<input type="text" placeholder="Текст..." translate="Text..." translate2="Texto...">
+						<div class="select-math-operator-for-answer-rule">
+							<span translate="And" translate2="Y" data="and">И</span>
+							<span translate="Or" translate2="O" data="or">Или</span>
+						</div>
+					</div>
+				</div>
+				<div style="text-align: center;">
+					<h3 style="display: inline-block;" translate="Then, send him:" translate2="Entonces, envíalo:">То, отправить ему:</h3>
+					<div id="select-message-to-answer-rule">
+						<select id="select-msg-to-new-answer-rule" class="nice_select"></select>
+					</div>
+				</div>
+				<div style="text-align: center;">
+					<h3 style="display: inline-block;" translate="Otherwise, send:" translate2="De lo contrario, envíe:">Иначе, отправить:</h3>
+					<div id="select-message-to-answer-else-rule">
+						<select id="select-else-action-answer" class="nice_select">
+							<option value="false">-</option>
+						</select>
+					</div>
+				</div>
+				<div class="buttons buttons-modal" style="margin-top:15px;">
+					<div class="btn-modals waves-effect"
+						onclick="$('.modal').modal('hide');setTimeout(() => {$('#modal-answer-rules').modal('show')}, 150)">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Back" translate2="atrás">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="create-new-answer-rule">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-create-answer-message" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Message for an auto response" translate2="Mensaje para contestador">
+					Сообщение для автоответчика
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form" style="margin: 0 auto;padding:  0;margin-bottom:  15px;max-width: 100%;">
+					<label>
+						<vgr translate="Name" translate2="Nombre">Имя</vgr>
+						<input placeholder="Сообщение #1" translate="Message #1" translate2="Mensaje #1" type="text" id="name-of-new-answer-message" style="margin-left: 15px;">
+					</label>
+				</div>
+				<div id="block-answer-message-create">
+					<label
+						style="font-size: 19px;display: block;text-align: left;margin-bottom: -5px;font-weight: 500;letter-spacing: 1px;">
+						<vgr translate="Message text" translate2="Mensaje de texto">Текст сообщения</vgr>
+						<label
+							style="font-size: 15px;display: block;text-align: left;font-weight: 300;margin-top: 5px;margin-bottom: -5px;letter-spacing: 0.5px;">
+							<vgr translate="Number of randomization options" translate2="Número de opciones de aleatorización">
+								Количество вариантов рандомизации</vgr>: <v id="count-random-of-new-answer-message">0</v>
+							<span class="help-question-click">
+								<span translate="The number of all possible message options."
+									tooltip="Количество всех возможных вариантов сообщения." flow="up"
+									translate2="El número de todas las opciones de mensaje posibles.">
+									<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+								</span>
+							</span>
+						</label>
+					</label>
+					<textarea class="scrol-web" id="text-new-answer-message" translate="Message text..."
+						translate2="Texto del mensaje..." placeholder="Текст сообщения..."></textarea>
+					<label class="waves-effect" id="add-files-to-new-answer-message">
+						<i class="fa fa-arrow-circle-down"></i>
+						<vgr translate="Attach files" translate2="Adjuntar archivos">Прикрепить файлы</vgr>
+						<input type="file" id="file-input-for-new-answer-message" multiple>
+					</label>
+					<div id="type-of-upload-file-new-answer-message">
+						<div class="filename">
+							<div class="block-name"></div>
+							<button type="button" class="close waves-effect remove-file-block-spam"
+								style="border-radius: 50%;padding: 15px !important;margin-top: 0px !important;"></button>
+						</div>
+					</div>
+					<label style="display:block;margin-top:10px;text-align:center;">
+						<label for="enable-spoiler-files-new-answer-message" class="waves-effect">
+							<input type="checkbox" id="enable-spoiler-files-new-answer-message">
+						</label>
+						<span style="font-size:19px;font-weight:300;cursor:pointer;" translate="Send as a spoiler"
+							translate2="Enviar como spoiler">Отправлять как спойлер</span>
+					</label>
+				</div>
+				<div class="buttons buttons-modal" style="margin-top:20px;">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');setTimeout(() => {$('#modal-answer-rules').modal('show')}, 150)">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Back" translate2="atrás">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="create-new-answer-message-r">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-delete-answer-message" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Delete message" translate2="Eliminar mensaje">Удаление сообщения</h4>
+			</div>
+			<div class="modal-body">
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');setTimeout(() => {$('#modal-answer-rules').modal('show')}, 150)">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="delete-answer-msg-btn">
+						<i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-delete-answer-rule" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Delete rule" translate2="Eliminar regla">Удаление правила</h4>
+			</div>
+			<div class="modal-body">
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');setTimeout(() => {$('#modal-answer-rules').modal('show')}, 150)">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="delete-answer-rule-btn">
+						<i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-clear-blacklist" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Blacklist cleaning" translate2="Limpieza de la lista negra">Очистка чёрного списка</h4>
+			</div>
+			<div class="modal-body">
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="clear-blacklist">
+						<i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.change-accs-block {
+		opacity: 0;
+		pointer-events: none;
+		height: 0;
+		transition: .25s;
+	}
+
+	.change-accs-block.active {
+		height: 230px;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.block-before-table-spam table tbody tr td:nth-child(5) i {
+		font-size: 16px;
+		padding-left: 10px;
+		cursor: pointer;
+		transition: .25s;
+		opacity: .6;
+	}
+
+	.input-to-spam-message {
+		margin-top: -60px;
+	}
+
+	@media (max-width: 767px) {
+		.input-to-spam-message {
+			margin-top: -15px;
+		}
+	}
+	@media (max-width: 991px) {
+		#blacklist-private-dm-block {
+			margin-bottom: 0 !important;
+		}
+	}
+</style>

@@ -1,0 +1,791 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block">
+			<span>
+				<div>
+					<img src="./img/icons/accounts.png">
+					<h4 translate="Accounts" translate2="Cuentas">Аккаунты</h4>
+				</div>
+				<br>
+			</span>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-search">
+		<div class="row" id="row-block-accounts">
+			<div class="block-before-table scrol-web" style="padding: 5px 5px;margin-top: 20px;overflow-y: hidden;max-height:1000px;">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-accounts-bg-tr" style="float: left;">
+					<div class="btn-right-action waves-effect btn-export-accs" action="new_account" style="float: left;" translate="Export" translate2="Exportar">
+						Экспорт
+					</div>
+					<div class="btn-right-action waves-effect btn-invite-accs" action="new_account" style="float: left;width:  145px;margin:  0;" translate="Invite" translate2="Invitación">
+						Инвайтер
+					</div>
+					<div class="btn-right-action waves-effect btn-edit-accs" action="new_account" style="float: left;width:  145px;margin-left: 15px;" translate="Edit" translate2="Editar">
+						Управление
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-accounts-bg-tr" style="float: right;">
+				<div class="btn-right-action waves-effect btn-check_account" action="new_account" translate="Checker" translate2="Inspector">
+					Чекер
+				</div>
+					<div class="btn-right-action waves-effect btn-new_account" action="new_account" translate="Add" translate2="Añadir">
+						Добавить
+					</div>
+					<div class="btn-right-action waves-effect btn-set-tokens" action="new_account" translate="Set tokens" style="width: 145px;" translate2="Establecer tokens">Указать токены</div>
+				</div>
+			<br>
+			<textarea id="_hiddenCopyTe213xt_21" style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+			<div id="block-search-accs" class="active">
+				<input type="text" placeholder="Поиск..." translate="Search..." translate2="Buscar...">
+			</div>
+			<div class="scrol-web" id="scrol-web-table-accs" style="overflow: auto;width: 100%;margin-top: 30px;max-height: 340px;">
+				<table id="table-accounts">
+					<thead>
+						<tr>
+						<td translate="Name" translate2="Nombre">
+							Имя
+						</td>
+						<td translate="Status" translate2="Estado">
+							Статус
+						</td>
+						<td translate="Date added" translate2="Fecha Agregada">
+							Дата добавления
+						</td>
+						<td>
+
+						</td>
+					</tr></thead>
+					<tbody>
+						<!-- <tr>
+							<td>
+								3223434
+							</td>
+							<td>
+								<div class="change-status-account" hash="36">
+									<v hash="36">Включён<i class="fa fa-play"></i></v>
+									<i class="fa fa-sort-down"></i>
+									<div class="list-change-status-account" hash="36">
+										<div class="status select" type="on" hash="36">
+											Включён
+										</div>
+										<div class="status" type="off" hash="36">
+											Выключен
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								06.06 15:43
+							</td>
+							<td>
+								<i class="fa fa-pen edit-account" hash="36"></i>
+							</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-flex;height: 35px;margin: 5px 0;border-top: 1px solid #ffffff26;padding-top: 5px;position:relative;z-index:100;">
+				<div translate="Disable all" class="waves-effect block-after-form-input-btn-action" id="disable-all-accs" style="margin:0;margin-right:15px;" translate2="Desactivar todo">
+					Отключить все
+				</div>
+				<div translate="Enable all" class="waves-effect block-after-form-input-btn-action" style="margin:0;margin-right:15px;" id="enable-all-accs" translate2="Activar todo">
+					Включить все
+				</div>
+				<div translate="Delete disabled" class="waves-effect block-after-form-input-btn-action" style="margin:0;width:155px;" id="delete-all-disable-accs" translate2="Eliminar deshabilitado">
+					Удалить отключенные
+				</div>
+			</div>
+			<div class="statics-accs">
+				<span><vgr translate="Total" translate2="Total">Всего</vgr>: <gug><vgr>1 аккунт</vgr> (<span>1 активный</span>)</gug></span>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modal-add-account" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Add account" translate2="Añadir cuenta">Добавление аккаунта</h4>
+      </div>
+      <div class="modal-body">
+        <div class="def-settings" style="min-height: 195px;margin-bottom: -42px;">
+					<div class="parameter-def-settings">
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+							<span translate="Name" translate2="Nombre">Имя</span>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="name">
+							<input type="text" autocomplete="off" name="name" value class="change-value-parameter-def-s-input" translate="Account name..." placeholder="Имя аккаунта..." style="margin-bottom: 10px;" translate2="Nombre de la cuenta...">
+						</div>
+					</div>
+					<div class="parameter-def-settings">
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+							<span>Email</span>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="token">
+							<input type="text" autocomplete="off" name="login" value class="change-value-parameter-def-s-input" translate="Login from account..." placeholder="Логин от аккаунта..." style="margin-bottom: 10px;" translate2="Iniciar sesión desde la cuenta ...">
+						</div>
+					</div>
+					<div class="parameter-def-settings">
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+							<span translate="Password" translate2="Contraseña">Пароль</span>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="token">
+							<input type="password" autocomplete="off" name="password" value class="change-value-parameter-def-s-input" translate="Account password..." placeholder="Пароль от аккаунта..." style="margin-bottom: 10px;" translate2="Contraseña de cuenta ...">
+						</div>
+					</div>
+        </div>
+				<div class="def-settings-two">
+					<span translate="Enter the list of accounts in the format email@example.com: password" translate2="Ingrese la lista de cuentas en el formato email@example.com: contraseña">Впишите список аккаунтов в формате email@example.com:password</span>
+					<textarea placeholder="email@example.com:password:token
+email@example.com:password:token"></textarea>
+				</div>
+				<div class="parameter-def-settings" style="padding: 10px 10px;margin-top:5px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>Rucaptcha</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="Rucaptcha">
+						<li id="turn-on-rucaptcha" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="rucaptcha-check" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</li>
+						<input type="text" autocomplete="off" name="apikey" value class="change-value-parameter-def-s-input" placeholder="Apikey...">
+					</div>
+				</div>
+				<div class="parameter-def-settings" type="token" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="margin-top: 10px;">
+						<span>
+							Token
+							<a style="margin-left:5px;" url="https://www.youtube.com/watch?v=tI1lzqzLQCs" class="open-in-browser"><vgr translate="where to get?" translate2="donde conseguir">где взять?</vgr></a>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="Token" style="margin-top: 15px;">
+						<li id="turn-on-token-acc" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="token-acc-check" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</li>
+						<input type="text" autocomplete="off" name="token" value class="change-value-parameter-def-s-input" placeholder="Account token...">
+					</div>
+				</div>
+        <div class="button-action btn-add-account waves-effect" action="add_account" style="display: block;letter-spacing: 1px;font-size: 18px;" translate="ADD" translate2="AÑADIR">ДОБАВИТЬ</div>
+				<div class="waves-effect" id="add_more_accs" action="add_account" translate="Add multiple accounts" translate2="Agregar varias cuentas">Добавить несколько аккаунтов</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+	input[name="apikey"] {
+		opacity: 0;
+		height: 0;
+		pointer-events: none;
+		padding:0;
+	}
+	.change-value-parameter-def-s-os[name="Rucaptcha"].active input[name="apikey"] {
+		opacity: 1;
+    padding: 5px 5px;
+		height: 36px;
+		margin-bottom: 10px;
+		pointer-events: auto;
+	}
+	input[name="token"] {
+		opacity: 0;
+		padding:0;
+		height: 0;
+		pointer-events: none;
+	}
+	.change-value-parameter-def-s-os[name="Token"].active input[name="token"] {
+    padding: 5px 5px;
+		opacity: 1;
+		height: 36px;
+		pointer-events: auto;
+		margin-bottom: 10px;
+	}
+	#turn-on-rucaptcha {
+		opacity: 1 !important;
+		height: 36px !important;
+		pointer-events: auto !important;
+	}
+	.change-value-parameter-def-s-os[name="Rucaptcha"].active #turn-on-rucaptcha {
+		margin-top: -27px !important;
+		opacity: 0 !important;
+		height: 0 !important;
+		pointer-events: none !important;
+	}
+	#turn-on-token-acc {
+		opacity: 1 !important;
+		height: 36px !important;
+		pointer-events: auto !important;
+	}
+	.change-value-parameter-def-s-os[name="Token"].active #turn-on-token-acc {
+		margin-top: -27px !important;
+		opacity: 0 !important;
+		height: 0 !important;
+		pointer-events: none !important;
+	}
+	@media (max-width: 991px) {
+		.def-settings {
+			min-height: 205px !important;
+		}
+	}
+	.btn-right-action[action="new_account"] {
+		background: #ffffff00;
+    border: 1px solid #ffffff69;
+	}
+	.btn-right-action[action="new_account"]:hover {
+		color: #fff;
+		background:#ffffff24;
+	}
+	.btn-right-action[action="new_account"]:active {
+		color: #fff;
+		background:#ffffff24;
+		box-shadow: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+	}
+	#modal-export-accounts .form {
+		max-width: 100%;
+		padding: 0 !important;
+	}
+	#modal-export-accounts .form textarea {
+		width: 100%;
+    background: transparent;
+    border-radius: 5px;
+    border: 1px solid #ffffff6b;
+    resize: none;
+    margin-bottom: 5px;
+    outline: none;
+    min-height: 300px;
+    color: #ffffffd6;
+    font-weight: 300;
+    line-height: 20px;
+    font-size: 17px;
+    padding: 5px;
+	}
+	#modal-export-accounts .form label {
+		margin-right: 15px;
+    font-size: 18px;
+    font-weight: 500;
+	}
+	#modal-export-accounts .form input {
+		font-size: 17px;
+		width: 100%;
+		display:block;
+	}
+</style>
+
+<div id="modal-delete-account" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Deleting account" translate2="Eliminar cuenta">Удаление аккаунта</h4>
+			</div>
+			<div class="modal-body">
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" data-dismiss="modal">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect">
+						<i class="fa fa-trash-alt"></i>
+						<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-delete-disable-accounts" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Deleting accounts" translate2="Eliminar cuentas">Удаление аккаунтов</h4>
+      </div>
+      <div class="modal-body">
+				<div class="count-users" style="text-align: center;margin: 0px 0 15px 0;font-size: 20px;">
+      		<vgr translate="Total" translate2="Total">Всего</vgr> - <v></v>
+      	</div>
+      	<div class="buttons buttons-modal">
+	  			<div class="btn-modals waves-effect" data-dismiss="modal">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-trash-alt"></i>
+	  				<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+	  			</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-edit-editer-usernames-accounts" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h4 class="modal-title" translate="Deleting account" translate2="Eliminar cuenta">Редактирование списка
+					юзернеймов</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-modal">
+					<textarea></textarea>
+				</div>
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Back" translate2="atrás">Назад</vgr>
+					</div>
+					<div class="btn-modals waves-effect">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-edit-editer-status-accounts" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h4 class="modal-title" translate="Status List Editing" translate2="Edición de lista de estado">Редактирование списка статусов</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-modal">
+					<textarea id="status-input"></textarea>
+				</div>
+				<div class="form-modal">
+					<label translate="Emoji" translate2="Emoji" style="font-size:  21px;font-weight: 500;">Эмодзи</label>
+					<textarea id="emoji-input" style="min-height: 105px;"></textarea>
+				</div>
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');setTimeout(() => {$('#modal-edit-account').modal('show');}, 150)">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Back" translate2="atrás">Назад</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="save-status-editer-accounts">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-edit-editer-activity-accounts" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h4 class="modal-title" translate="Editing the list of games for accounts" translate2="Editar la lista de juegos para cuentas">Редактирование списка игр для аккаунтов</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-modal">
+					<textarea></textarea>
+				</div>
+				<div id="type-of-activity-block">
+					<label for="type-of-activity-editer" translate="Activity Type:" translate2="Tipo de actividad:">Тип активности:</label>
+					<select id="type-of-activity-editer" class="nice_select">
+						<option value="0">Playing</option>
+						<option value="1">Streaming</option>
+						<option value="2">Listening</option>
+						<option value="3">Watching</option>
+					</select>
+				</div>
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');setTimeout(() => {$('#modal-edit-account').modal('show');}, 150)">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Back" translate2="atrás">Назад</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="save-activity-editer-accounts">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-edit-editer-friends" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+        <h4 class="modal-title" translate="Deleting account" translate2="Eliminar cuenta">Редактирование списка юзернеймов</h4>
+      </div>
+      <div class="modal-body">
+				<div class="form-modal">
+					<textarea></textarea>
+				</div>
+      	<div class="buttons buttons-modal">
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Back" translate2="atrás">Назад</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-save"></i>
+	  				<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+	  			</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-edit-account" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+        <h4 class="modal-title" translate="Account management" translate2="Administración de cuentas">Управление аккаунтами</h4>
+      </div>
+      <div class="modal-body">
+				<div class="select-editer-accounts scrol-web"></div>
+				<div translate="Select all" class="waves-effect block-after-form-input-btn-action editer-sel-acc" translate2="Seleccionar todo">
+					Выбрать все
+				</div>
+				<div id="count-of-sel-accs-editer"><vgr translate="Selected" translate2="Seleccionado">Выбрано</vgr>: <pro translate="0 accounts" translate2="0 cuentas">0 аккаунтов</pro></div>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>
+							<vgr translate="Change of usernames" translate2="Cambio de nombres de usuario">Смена юзернеймов</vgr>
+							<span class="help-question-click" style="position:  relative;float:  right;">
+								<span translate="Change the names of the specified accounts to those that you specified randomly." tooltip="Смена имен указанных аккаунтов на те, которые вы указали случайным образом." flow="up" translate2="Cambie los nombres de las cuentas especificadas a las que especificó al azar.">
+									<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+								</span>
+							</span>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="usernames" style="margin-bottom: 20px;">
+						<li id="turn-on-change-usernames" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;margin-bottom: 20px;margin-left: 0;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="change-usernames-check" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+							<label translate="Upload from file" for="upload-file-usernames" class="btn waves-effect waves-light label-for-files" id="load_usernames" translate2="Descargar desde archivo">
+								Загрузить из файла
+							</label>
+							<span id="count-of-usernames-change" translate="0 usernames" translate2="0 nombres de usuario">0 юзернеймов</span>
+						</li>
+					</div>
+					<input type="file" style="display:none;" id="upload-file-usernames" accept=".txt">
+				</div>
+				<br><br><br><br>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>
+							<vgr translate="Change of avatars" translate2="Cambio de avatares">Смена аватаров</vgr>
+							<span class="help-question-click" style="position:  relative;float:  right;">
+								<span translate="Change avatars on the specified accounts to those that you specified randomly." tooltip="Смена аватаров на указанных аккаунтах на те, которые вы указали случайным образом." flow="up" translate2="Cambia los avatares de las cuentas especificadas a las que especificaste al azar.">
+									<i class="fa fa-question-circle" style="font-size: 14px;margin-left: 10px;"></i>
+								</span>
+							</span>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="avatars" style="margin-bottom: 30px;">
+						<li id="turn-on-change-avatars" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;margin-bottom: 20px;margin-left: 0;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="change-avatars-check" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+							<label translate="Upload from file" for="upload-file-avatars" class="btn waves-effect waves-light label-for-files" id="load_usernames" translate2="Descargar desde archivo">
+								Загрузить из файла
+							</label>
+							<button type="button" class="waves-effect waves-light close-file-btn hide-close-file-btn" style="position:relative;z-index:10000;" id="close-btn-avatars" name="button"></button>
+							<span id="count-of-avatars-change" translate="0 images" translate2="0 imágenes">0 изображений</span>
+						</li>
+					</div>
+					<input type="file" style="display:none;" id="upload-file-avatars" multiple accept=".jpg,.jpeg,.png,.gif">
+				</div>
+				<br><br><br><br>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>
+							<vgr translate="Friends adder" translate2="Cambio de avatares">Накрутка друзей</vgr>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="avatars" style="margin-bottom: 30px;">
+						<li id="turn-on-adder" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;margin-bottom: 20px;margin-left: 0;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="check-friends-adder" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+							<div class="btn waves-effect waves-light label-for-files" id="put_usernames_to_adder" translate="Edit usernames" translate2="Editar nombres">
+								Редактировать юзернеймы
+							</div>
+							<span id="count-of-adder-friends" translate="0 users" translate2="0 usuarios">0 пользователей</span>
+						</li>
+					</div>
+				</div>
+				<br><br><br><br>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>
+							<vgr translate="Users status" translate2="Estado del usuario">Статус пользователей</vgr>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="status" style="margin-bottom: 30px;">
+						<li id="turn-on-status" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;margin-bottom: 20px;margin-left: 0;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="check-editer-status" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+							<div class="btn waves-effect waves-light label-for-files" id="put_status_to_editer" translate="Edit statuses" translate2="Editar estados">
+								Редактировать статусы
+							</div>
+							<span id="count-of-status-editer" translate="0 statuses" translate2="0 estados">0 статусов</span>
+						</li>
+					</div>
+				</div>
+				<br><br><br><br>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>
+							<vgr translate="Game activity" translate2="Actividad del juego">Игровая активность</vgr>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="activity style="margin-bottom: 30px;">
+						<li id="turn-on-activity" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;margin-bottom: 20px;margin-left: 0;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="check-editer-activity" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+							<div class="btn waves-effect waves-light label-for-files" id="put_activity_to_editer" translate="Edit game list" translate2="Editar lista de juegos">
+								Редактировать список игр
+							</div>
+							<span id="count-of-activity-editer" translate="0 juegos" translate2="0 games">0 игр</span>
+						</li>
+					</div>
+				</div>
+				<br><br><br><br>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span>
+							<vgr translate="Users online-status" translate2="Estado en línea de los usuarios">Онлайн пользователей</vgr>
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 change-value-parameter-def-s-os" name="status-users" style="margin-bottom: 30px;">
+						<select class="nice_select" id="select-status-users-manage" style="width:auto;">
+							<option value="false">-</option>
+							<option value="online">Online</option>
+							<option value="idle">IDLE</option>
+							<option value="dnd" translate="DND (do not disturb)" translate2="DND (no molestar)">DND (не беспокоить)</option>
+							<option value="random">Random</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="button-action waves-effect btn-start-editer" action="start_spam" style="float: none;margin: 10px auto 0 auto;display:  block;">START</div>
+					</div>
+					<div id="count-success-editer"><span>0</span> <vgr translate="out of" translate2="fuera de">из</vgr> <all>0</all></div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-check-accounts" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+        <h4 class="modal-title" translate="Check accounts availability" translate2="Consultar disponibilidad de cuentas">Проверка доступности аккаунтов</h4>
+      </div>
+      <div class="modal-body">
+				<div class="select-checker-accounts scrol-web"></div>
+				<div translate="Select all" class="waves-effect block-after-form-input-btn-action checker-sel-acc" translate2="Seleccionar todo">
+					Выбрать все
+				</div>
+				<div id="count-of-sel-accs-checker"><vgr translate="Selected" translate2="Seleccionado">Выбрано</vgr>: <pro translate="0 accounts" translate2="0 cuentas">0 аккаунтов</pro></div>
+				<div class="parameter-def-settings" style="padding: 10px 10px;">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span translate="Disable inaccessible accounts" translate2="Deshabilitar cuentas inaccesibles">
+							Отключать недоступные аккаунты
+						</span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-8 col-xs-8 change-value-parameter-def-s-os" name style="margin-bottom: 20px;">
+						<li id="turn-on-off-bad-accs-check" style="list-style: none;display: block;text-align: -webkit-center;margin: 0 auto;height: 36px;position: relative;left: calc(50% - 45px);transition:.25s;cursor:pointer;margin-bottom: 20px;margin-left: 0;">
+							<span>
+								<label class="dThemeSwitch">
+									<input id="off-bad-accs-check" type="checkbox">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</li>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="button-action waves-effect btn-start-checker" action="start_spam" style="float: none;margin: 10px auto 0 auto;display:  block;">CHECK</div>
+					</div>
+					<div id="count-success-checker"><span>0</span> <vgr translate="out of" translate2="fuera de">из</vgr> <all>0</all></div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-edit-editer-invites-inviters" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+        <h4 class="modal-title" translate="Invites List" translate2="Lista de invitaciones">Список инвайтов</h4>
+      </div>
+      <div class="modal-body">
+				<div class="form-modal">
+					<textarea></textarea>
+				</div>
+      	<div class="buttons buttons-modal">
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Back" translate2="atrás">Назад</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-save"></i>
+	  				<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+	  			</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-invite-accounts" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Inviter" translate2="Invitador">Инвайтер</h4>
+      </div>
+      <div class="modal-body">
+		<div class="parameter-def-settings">
+			<div class="btn-right-action waves-effect btn-set-invites-for-inviter" action="new_account" translate="Set invites" style="width: 145px !important;float:none;text-align:center;margin:0 auto;display:block;" translate2="Establecer invitaciones">Указать инвайты</div>
+			<div id="count-of-invite-inviter"><vgr translate="Total" translate2="Total">Всего</vgr>: <pro translate="0 invites" translate2="0 invitaciones">0 инвайтов</pro></div>
+		</div>
+		<div class="select-inviter-accounts scrol-web"></div>
+		<div id="mode-of-inviter-block">
+			<span translate="Mode:" translate2="Modo:" style="font-size: 20px;">Режим:</span>
+			<select class="nice_select" id="mode-of-inviter">
+				<option value="invite" translate="Joining the servers" translate2="Unirse a los servidores">Присоединение к серверам</option>
+				<option value="leave" translate="Server logout" translate2="Cierre de sesión del servidor">Выход с серверов</option>
+			</select>
+		</div>
+		<div id="inviter-delay-block">
+			<span>
+				<vgr translate="Delay (sec)" translate2="Retraso (seg)">Задержка (сек)</vgr>
+				<span>
+					<label class="dThemeSwitch">
+						<input id="inviter-delay-enable" type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</span>
+			</span>
+			<div id="inviter-delay-block-settings" class="form">
+				 <label for="from-inviter-delay" translate="From" translate2="Desde">
+					 От
+				 </label>
+				 <input type="text" id="from-inviter-delay" placeholder="...">
+				 <label for="to-inviter-delay" translate="To" translate2="Hasta">
+					 До
+				 </label>
+				 <input type="text" id="to-inviter-delay" placeholder="...">
+			</div>
+		</div>
+		<div translate="Select all" class="waves-effect block-after-form-input-btn-action inviter-sel-acc" translate2="Seleccionar todo">
+			Выбрать все
+		</div>
+		<div id="count-of-sel-accs-inviter"><vgr translate="Selected" translate2="Seleccionado">Выбрано</vgr>: <pro translate="0 accounts" translate2="0 cuentas">0 аккаунтов</pro></div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="button-action waves-effect btn-start-inviter" action="start_spam" style="float: none;margin: 10px auto 0 auto;display:  block;">INVITE</div>
+			</div>
+			<div id="count-success-invite"><span>0</span> <vgr translate="out of" translate2="fuera de">из</vgr> <all>0</all></div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-export-accounts" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"></button>
+        <h4 class="modal-title" translate="Export accounts" translate2="Cuentas de exportación">Экспорт аккаунтов</h4>
+      </div>
+      <div class="modal-body">
+				<div class="form">
+					<textarea readonly resize="none"></textarea>
+					<label for="format-export-accounts" translate="Format" translate2="Formato">Формат</label>
+					<input type="text" id="format-export-accounts" placeholder="email:password" value="email:password:token">
+				</div>
+      	<!-- <div class="buttons buttons-modal">
+	  			<div class="btn-modals waves-effect" data-dismiss="modal">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Cancel">Отмена</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-copy"></i>
+	  				<vgr translate="Delete">Скопировать</vgr>
+	  			</div>
+      	</div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-set-tokens-accounts" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Account tokens" translate2="Fichas de cuenta">Токены аккаунтов</h4>
+			</div>
+			<div class="modal-body">
+				<div class="list-tokens-accs">
+					<div class="account-token-block scrol-web"></div>
+				</div>
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" data-dismiss="modal">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

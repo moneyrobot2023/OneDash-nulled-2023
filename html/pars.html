@@ -1,0 +1,822 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block">
+			<span>
+				<div>
+					<img src="./img/icons/pars.png">
+					<h4 translate="Parsing" translate2="Analizando">Парсинг</h4>
+				</div>
+				<br>
+				<span class="change-space-pars" style="margin-top: 5px;">
+					<div class="active" translate="Parsing server users" translate2="Analizando usuarios del servidor">
+						Парсинг пользователей сервера
+					</div>
+										<!-- <div class="two disable">
+						Парсинг каналов сервера
+					</div> -->
+									</span>
+			</span>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-pars" style="opacity: 1; display: block;">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label for="input-invite-to-server" translate="Invite to server" translate2="Invitar al servidor" style="transition:.25s;">
+							Инвайт на сервер
+						</label>
+						<label id="label-invites-for-parsing" translate="Multithreaded parsing " translate2="Análisis multiproceso">Многопоточный парсинг</label>
+						<i class="fa fa-chevron-right waves-effect" id="change-type-pars"></i>
+						<br>
+						<input type="text" id="input-invite-to-server" placeholder="https://discord.gg/...">
+						<div id="put-invites-for-parsing" class="waves-effect" translate="Specify invites" translate2="Especificar invitaciones">Указать инвайты</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label for="select-account" translate="Account" translate2="Cuenta">
+							Аккаунт
+						</label>
+						<br>
+						<select id="select-account" class="select-account"></select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="form">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Specific channels for pars" translate2="Canales específicos para pars">Определенные каналы для парсинга</vgr>
+								<span class="help-question-click">
+									<span translate="Parse participants from certain channels for greater coverage of covert channel participants." tooltip="Спарсить участников с определенных каналов, для большего охвата участников скрытых каналов." flow="up" translate2="Analice a los participantes de ciertos canales para una mayor cobertura de los participantes del canal encubierto.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span>
+				              <label class="dThemeSwitch">
+				                <input type="checkbox" id="enable-own-channels-list-checkbox" style="display: none;">
+				                <span class="slider round"></span>
+				              </label>
+				            </span>
+						</span>
+						<div class="form" id="enable-own-channels-list-block">
+							<span translate="Channels IDs" translate2="Canals ID">ID каналов</span>
+							<input id="enable-own-channels-list" type="text" placeholder="Через запятую" translate="Comma separated" translate2="Separado por comas">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="form">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Check default avatars" translate2="Comprobar avatares predeterminados">Проверять дефолтные аватары</vgr>
+								<span class="help-question-click">
+									<span translate="Add to the list of users only those who have installed the default avatar Discord." tooltip="Добавлять в список пользователей только тех, у кого установлен дефолтный аватар Discord." flow="up" translate2="Agregue a la lista de usuarios solo aquellos que hayan instalado el avatar predeterminado Discord.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<input type="hidden" id="check-avatars" value="0">
+							<span onclick="enableCheckAvatar();">
+				              <label class="dThemeSwitch">
+				                <input type="checkbox" id="check-avatars-checkbox" style="display: none;">
+				                <span class="slider round"></span>
+				              </label>
+				            </span>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="form">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Check roles" translate2="Consultar privilegios">Проверка ролей</vgr>
+								<span class="help-question-click">
+									<span translate="Add to the list of users only those who have one of the specified roles." tooltip="Добавлять в список пользователей только тех, у кого есть одна из указанных ролей." flow="up" translate2="Agregue a la lista de usuarios solo aquellos que tengan uno de los roles especificados.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<input type="hidden" id="check-privilege" value="0">
+							<span onclick="enableCheckPrivilege();" class="switch-privil-check">
+				              <label class="dThemeSwitch">
+				                <input type="checkbox" id="check-privilege-checkbox" style="display: none;">
+				                <span class="slider round"></span>
+				              </label>
+				            </span>
+						</span>
+					</div>
+					<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 form-check-priv">
+						<div class="waves-effect block-after-form-input-btn-action" id="pars-server-roles" translate="Get role list" translate2="Obtener lista de roles">
+							Получить список ролей
+						</div>
+						<div class="roles-data-block">
+							<span id="roles-count-pars" translate="0 roles" translate2="0 roles">0 ролей</span>
+							<div class="waves-effect block-after-form-input-btn-action" id="edit-pars-roles" translate="Edit" translate2="Editar">
+								Редактировать
+							</div>
+						</div>
+						<button type="button" class="waves-effect" id="close-pars-roles-data"></button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="form">
+						<span>
+							<label>
+								<vgr translate="Online from the phone" translate2="En línea desde el teléfono">Устройство пользователей</vgr>
+								<span style="position:relative;" class="help-question-click">
+									<span translate="Add to the list of users only those who are in the network from these devices." tooltip="Добавлять в список пользователей только тех, кто находится в сети с указанных устройств." flow="up" translate2="Agregue a la lista de usuarios solo aquellos que están en la red desde estos dispositivos.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<select multiple id="client-status-device">
+								<option value="1" disabled translate="Any" translate2="Ninguna">Любой</option>
+								<option value="web">Web</option>
+								<option value="mobile">Mobile</option>
+								<option value="desktop">Desktop</option>
+							</select>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="form">
+						<label for="check-status-users" translate="User status" translate2="Estatus de usuario">
+							Статус пользователей
+						</label>
+						<select multiple id="check-status-users">
+							<option value="1" disabled translate="Any" translate2="Ninguna">Любой</option>
+							<option value="online" translate="Online" translate2="En línea">В сети</option>
+							<option value="idle" translate="IDLE" translate2="OCIOSO">Нет на месте (IDLE)</option>
+							<option value="dnd" translate="Do not disturb" translate2="No molestar">Не беспокоить</option>
+							<option value="offline" translate="Offline" translate2="Desconectado">Не в сети</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="specify-block-black-servers">
+					<div class="form">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Shared Server Filter" translate2="Filtro de servidor compartido">Фильтр общих серверов
+								</vgr>
+								<span class="help-question-click">
+									<span translate="Add to the list of users only those who are not members of the specified servers."
+										tooltip="Добавлять в список пользователей только тех, кто не состоит в указанных серверах."
+										flow="up"
+										translate2="Agregue a la lista de usuarios solo aquellos que no son miembros de los servidores especificados.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span class="switch-privil-check">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="check-black-servers" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 form-check-black-servers">
+						<div class="waves-effect block-after-form-input-btn-action" id="put-black-servers" translate="Specify invites"
+							translate2="Especificar invitaciones">
+							Указать инвайты
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="specify-block-check-parse-voices">
+					<div class="form">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Only parse voice channel members" translate2="Analizar solo los miembros del canal de voz">Парсить только участников голосовых каналов
+								</vgr>
+								<span class="help-question-click">
+									<span translate="Add to the list of users only those who are connected to the voice channel on the server."
+										tooltip="Добавлять в список пользователей только тех, кто подключён к голосовому каналу на сервере."
+										flow="up"
+										translate2="Agregue a la lista de usuarios solo aquellos que están conectados al canal de voz en el servidor.">
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span class="switch-privil-check">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="check-parse-voices" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="specify-block-check-parse-gaming">
+					<div class="form">
+						<span style="display: flex;">
+							<label>
+								<vgr translate="Game filter" translate2="Filtro de juego">Игровой фильтр</vgr>
+								<span class="help-question-click">
+									<!-- <span translate="Add to the list of users only those who are currently playing."
+										tooltip="Добавлять в список пользователей только тех, кто играет в текущий момент."
+										flow="up"
+										translate2="Agregue a la lista de usuarios solo aquellos que están jugando actualmente">
+										<i class="fa fa-question-circle"></i>
+									</span> -->
+									<span>
+										<i class="fa fa-question-circle"></i>
+									</span>
+								</span>
+							</label>
+							<span class="switch-privil-check">
+								<label class="dThemeSwitch">
+									<input type="checkbox" id="check-parse-gaming" style="display: none;">
+									<span class="slider round"></span>
+								</label>
+							</span>
+						</span>
+					</div>
+					<div class="waves-effect block-after-form-input-btn-action" translate="Edit" translate2="Editar" id="users-activity-settings-block" onclick="$('#users-activity-settings').modal()">
+						Редактировать
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="form">
+					<span style="display: flex;">
+						<label>
+							<vgr translate="Check the date of entry to the server" translate2="Verifique la fecha de entrada al servidor">Проверять дату вхождения на сервер</vgr>
+							<span class="help-question-click">
+								<span translate="Add to the list of users only those who joined the server in the specified period." tooltip="Добавлять в список пользователей только тех, кто вступил на сервер в указанный период." flow="up" translate2="Agregue a la lista de usuarios solo aquellos que se unieron al servidor en el período especificado.">
+									<i class="fa fa-question-circle"></i>
+								</span>
+							</span>
+						</label>
+						<span class="switch-privil-check">
+							<input type="hidden" id="check-join-time" value="0">
+							<label class="dThemeSwitch">
+								<input type="checkbox" id="check-join-time-checkbox" style="display: none;">
+								<span class="slider round"></span>
+							</label>
+						</span>
+					</span>
+				</div>
+			</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-date-before-one form-date-before">
+						<div class="form form-date">
+							<span translate="From" translate2="Desde">С</span>
+							<input data-toggle="datepicker" id="input-date-first" type="text" placeholder="08.06.2019">
+							<br>
+							<span style="margin-top:10px;" translate="To" translate2="A">До</span>
+							<input data-toggle="datepicker" style="margin-top:10px;" id="input-date-second" type="text" placeholder="08.06.2019">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="form">
+					<span style="display: flex;">
+						<label>
+							<vgr translate="Check user registration date" translate2="Comprobar fecha de registro de usuario">Проверять дату регистрации пользователей</vgr>
+							<span class="help-question-click" style="position:absolute;">
+								<span translate="Add to the list of users only those who were registered during the specified period." tooltip="Добавлять в список пользователей только тех, кто был зарегистрирован в указанный период." flow="up" translate2="Agregue a la lista de usuarios solo aquellos que se registraron durante el período especificado.">
+									<i class="fa fa-question-circle"></i>
+								</span>
+							</span>
+						</label>
+						<input type="hidden" id="check-reg-time" value="0">
+						<span class="switch-privil-check">
+							<label class="dThemeSwitch">
+								<input type="checkbox" id="check-reg-time-checkbox" style="display: none;">
+								<span class="slider round"></span>
+							</label>
+						</span>
+					</span>
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-date-before-two form-date-before">
+					<div class="form form-date">
+						<span translate="From" translate2="Desde">С</span>
+						<input data-toggle="datepicker" id="input-date-reg-first" type="text" placeholder="08.06.2019">
+						<br>
+						<span style="margin-top:10px;" translate="To" translate2="A">До</span>
+						<input data-toggle="datepicker" style="margin-top:10px;" id="input-date-reg-second" type="text" placeholder="08.06.2019">
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="form" id="before-block-verify-server">
+					<span>
+						<label translate="Server verification" translate2="Verificación del servidor">
+							Верификация на сервере
+						</label>
+						<span>
+							<label class="dThemeSwitch">
+								<input type="checkbox" id="enabler_channel_verification" style="display: none;">
+								<span class="slider round"></span>
+							</label>
+						</span>
+					</span>
+					<div id="channel-verify-block">
+						<label for="channel-verify-channel-id-pars">
+							<vgr translate="Channel ID" translate2="Identificación del canal">ID канала</vgr> (<w
+								translate='<a class="open-in-browser" url="https://gyazo.com/b0102ee258dccbc6face0dea671212f1">where to get?</a>'
+								translate2='<a class="open-in-browser" url="https://gyazo.com/7dcbada8878cb8205a71e2b96c9817b8">donde conseguir</a>'>
+								<a class="open-in-browser" url="https://gyazo.com/0504b6a21136a514b3ab2fb02b119d10">где взять?</a>
+							</w>):
+						</label>
+						<input type="text" id="channel-verify-channel-id-pars" placeholder="...">
+						<br>
+						<label for="channel-verify-message-id-pars">
+							<vgr translate="Message ID" translate2="Identificación del mensaje">ID сообщения</vgr> (
+							<w translate='<a class="open-in-browser" url="https://gyazo.com/412e4e7a6e47b65b00c6f8440749b1f7">where to get?</a>'
+								translate2='<a class="open-in-browser" url="https://gyazo.com/9756d0e8526b2023c94ee76949856dc8">donde conseguir</a>'>
+								<a class="open-in-browser" url="https://gyazo.com/c259a38baefb23d521bbb4af02da605d">где взять?</a>
+							</w>):
+						</label>
+						<input type="text" id="channel-verify-message-id-pars" placeholder="..." style="margin-top: 15px;">
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form">
+						<label for="limit-count-users" translate="User limit" translate2="Límite de usuario">
+							Лимит пользователей
+						</label>
+						<br>
+						<input type="text" id="limit-count-users" placeholder="..." value="15000">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="button-action btn-start-pars waves-effect" action="start_pars">PARS</div>
+				</div>
+				<div id="count-pars-users"><v>0</v> <vgr translate="of" translate2="de">из</vgr> <all>0</all></div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block block-pars block-pars-hist " style="opacity: 0; display: none;">
+			<span>
+				<div>
+					<i class="fa fa-clock"></i>
+					<h4 translate="History" translate2="Historia">История</h4>
+				</div>
+			</span>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-pars block-pars-hist" style="opacity: 0; display: none;">
+			<div class="block-before-table scrol-web">
+				<textarea id="_hiddenCopyText__2" style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+				<table id="table-pars" style="transition: .25s;">
+					<thead>
+						<tr>
+							<th>
+								#
+							</th>
+							<th translate="Name" translate2="Nombre">
+								Имя
+							</th>
+							<th translate="Count" translate2="Contar">
+								Количество
+							</th>
+							<th translate="Date" translate2="Fecha">
+								Дата
+							</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index block-pars-channels text-center" style="display: none; opacity: 0;">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label translate="Invite to server" translate2="Invitar al servidor">
+							Инвайт на сервер
+						</label>
+						<br>
+						<input type="text" id="input-invite-to-server-channels" placeholder="discord.gg/...">
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form">
+						<label for="select-account" translate="Account" translate2="Cuenta">
+							Аккаунт
+						</label>
+						<br>
+						<select id="select-account-channel" class="select-account"></select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="button-action waves-effect btn-start-pars-channels" action="start_pars_channels">START</div>
+				</div>
+				<div id="count-pars-channels" translate="0 channels" translate2="0 canales">0 пользователей</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 headline-block block-pars-channels block-pars-channels-hist" style="display: none; opacity: 0;">
+			<span>
+				<div>
+					<i class="fa fa-clock"></i>
+					<h4 translate="History" translate2="Historia">История</h4>
+				</div>
+			</span>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block-index text-center block-pars-channels block-pars-channels-hist" style="display: none; opacity: 0;">
+			<div class="block-before-table scrol-web">
+				<textarea id="_hiddenCopyText__3" style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+				<table id="table-pars-channels" style="transition: .25s;">
+					<thead>
+						<tr>
+							<th>
+								#
+							</th>
+							<th translate="Name" translate2="Nombre">
+								Имя
+							</th>
+							<th translate="Count" translate2="Contar">
+								Количество
+							</th>
+							<th translate="Date" translate2="Fecha">
+								Дата
+							</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-select-combiner-lists" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Merging Lists" translate2="Fusionar listas">Объединение списков</h4>
+			</div>
+			<div class="modal-body">
+				<div class="first-list-combiner">
+					<img
+						src="https://cdn.discordapp.com/icons/393088095840370689/a_9640a845c3b7fd0ad1fdeb786d8dafa1.png?size=128">
+					<span>
+						<vgr translate="Server" translate2="Servidor">Сервер</vgr>: <b>PUBG MOBILE</b>
+					</span>
+				</div>
+				<div class="select-lists-comb-block scrol-web"></div>
+				<span id="count-of-selected-pars-comb-lists">
+					<vgr translate="Selected" translate2="Seleccionado">Выбрано</vgr>: <y>0</y>
+				</span>
+				<div translate="Select all"
+					class="waves-effect block-after-form-input-btn-action select-all-change-accounts"
+					translate2="Seleccionar todo" id="select-all-merge-lists">
+					Выбрать все
+				</div>
+				<div class="waves-effect block-after-form-input-btn-action select-all-change-accounts" flow="up" tooltip="Выбрать все сервера с одинаковой инвайт-ссылкой." translate="Select all servers with the same invite link." translate2="Seleccione todos los servidores con el mismo enlace de invitación.">
+					<vgr translate="Select duplicates" translate2="Seleccionar duplicados" id="select-all-dublicates-merge-lists">
+						Выбрать дубликаты
+					</vgr>
+				</div>
+				<br>
+				<div class="buttons buttons-modal">
+					<div class="btn-modals waves-effect" data-dismiss="modal">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="combine-lists-pars">
+						<i class="fa fa-plus-square"></i>
+						<vgr translate="Combine" translate2="Combinar">Объединить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal-edit-pars-list" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Editing user list" translate2="Editar lista de usuarios">Редактирование списка пользователей</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="search-list-pars-edit">
+      		<input type="text" placeholder="username...">
+      	</div>
+      	<div class="input-add-users-to-pars-list">
+      		<textarea placeholder="username#1234
+username#1234
+username#1234"></textarea>
+      	</div>
+      	<div class="input-get-list-users">
+      		<textarea readonly></textarea>
+      	</div>
+        <div class="list-pars-edit scrol-web" id="list_pars_edit">
+        	<ul>
+        	</ul>
+        </div>
+        <div class="action-add-users-to-pars-list" style="margin-top: 10px;font-size: 18px;">
+        	<span>
+        		<i class="fa fa-times-circle"></i>
+        		<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+        	</span>
+        	<span style="float: right;">
+        		<i class="fa fa-plus-circle"></i>
+        		<vgr translate="Add" translate2="Añadir">Добавить</vgr>
+        	</span>
+        </div>
+        <div class="action-get-users-to-pars-list" style="margin-top: 10px;font-size: 18px;">
+        	<span>
+        		<i class="fa fa-times-circle"></i>
+        		<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+        	</span>
+        	<span style="float: right;">
+        		<i class="fa fa-copy"></i>
+        		<vgr translate="Copy" translate2="Dupdo">Скопировать</vgr>
+        	</span>
+        </div>
+        <div class="count-pars-list-edit-checkbox" style="margin-top: 10px;font-size: 18px;">
+        	<span><vgr translate="Selected" translate2="Seleccionado">Выделено</vgr>: 0</span>
+        	<span style="display: block;"><vgr translate="Total" translate2="Total">Всего</vgr>: 0</span>
+        </div>
+        <div class="action-pars-list-edit-checkbox" style="margin-top: 10px;font-size: 18px;">
+	    		<span style="float: right;" flow="left" tooltip="Получить весь список пользователей. Вид — «username#1234»" translate="Get the entire list of users. View - «username#1234»‎" translate2="Obtenga la lista completa de usuarios. Ver - «nombre de usuario # 1234»"><label style="font-weight:500;cursor:pointer;"><vgr translate="Export list to file" translate2="Exportar lista a archivo">Экспортировать список в файл</vgr><input id="file-to-export-pars" type="file" style="display:none;"></label></span>
+	    		<span translate="Remove selection" translate2="Eliminar selección">Убрать выделения</span>
+        </div>
+		<div class="add-users-to-pars-list" style="margin-top: 5px;font-size: 18px;">
+			<vgr tooltip="Добавить уникальных пользователей с других списков." translate="Add unique users from other lists."
+				translate2="Agregue usuarios únicos de otras listas."><span translate="Merge Lists"
+					translate2="Listas de fusión">Объединить списки</span></vgr>
+			<span style="float: right;" class="random-list-users" tooltip="Перемешать список пользователей в случайном порядке."
+				translate="Shuffle user list in random order." flow="left"
+				translate2="Mezcle la lista de usuarios en orden aleatorio.">
+				<vgr translate="Randomize" translate2="Aleatorizar">Рандомизировать</vgr>
+			</span>
+		</div>
+		<div id="apply-blacklist-block" style="float: left;font-size: 18px;margin-top:5px;" tooltip="Удалить из списка пользователей, которые находятся в текущем черном списке программы."
+			translate="Remove from the list of users who are in the current blacklist of the program."
+			translate2="Eliminar de la lista de usuarios que se encuentran en la lista negra actual del programa.">
+			<span
+			translate="Apply black list"
+				translate2="Aplicar emergencia">Применить ЧС</span></div>
+		<div id="export-user-ids-pars">
+			<span tooltip="Получить весь список ID пользователей." translate="Get the entire list of user IDs." translate2="Obtenga la lista completa de ID de usuario."><label style="font-weight:500;cursor:pointer;"><vgr translate='Export User ID' translate2='Exportar ID de usuario'>Экспортировать User ID</vgr> <input type="file" style="display:none;"></label></span>
+		</div>
+		<div id="import-user-ids-pars">
+			<span tooltip="Добавить ID пользователей из файла." translate="Add users IDs from file." translate2="Agregue los ID de los usuarios del archivo.">
+				<label style="font-weight:500;cursor:pointer;">
+					<vgr translate='Import' translate2='Importar'>
+						Импортировать
+					</vgr>
+					<input type="file" id="file-to-import-pars" style="display: none;">
+				</label>
+			</span>
+		</div>
+        <div class="action-pars-list-edit">
+        	<span>
+        		<i class="fa fa-user-slash"></i>
+        		<vgr translate="Remove" translate2="retirar">Удалить</vgr>
+        	</span>
+        </div>
+        <div class="save-btn-pars-list-edit">
+        	<span>
+        		<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+        	</span>
+        </div>
+        <div>
+        	<input type="text" readonly id="edit-invite-pars-list" value="https://discord.gg/.." tooltip="Редактировать" translate="Edit" translate2="Editar">
+        </div>
+      </div>
+    </div>
+    <textarea id="_hiddenCopyText_" style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+  </div>
+</div>
+<div id="modal-edit-pars-list-channels" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Editing the channel list" translate2="Editar la lista de canales">Редактирование списка каналов</h4>
+      </div>
+      <div class="modal-body">
+        <div class="search-list-pars-channels-edit">
+          <input type="text" placeholder="channel...">
+        </div>
+        <div class="input-get-list-channels">
+      		<textarea readonly></textarea>
+      	</div>
+        <div class="list-pars-edit-channels scrol-web">
+          <ul>
+          </ul>
+        </div>
+        <div class="count-pars-list-edit-checkbox-channels" style="margin-top: 10px;font-size: 18px;">
+          <span><vgr translate="Selected" translate2="Seleccionado">Выделено</vgr>: 0</span>
+          <span style="display: block;"><vgr translate="Total" translate2="Total">Всего</vgr>: 0</span>
+        </div>
+        <div class="action-pars-list-edit-checkbox-channels" style="margin-top: 10px;font-size: 18px;">
+          <span style="float: right;" flow="left" tooltip="Получить весь список каналов.">Скопировать весь список</span>
+          <span translate="Remove selection" translate2="Eliminar selección">Убрать выделения</span>
+        </div>
+        <div style="margin-top: 10px;font-size: 18px;text-align: right;">
+          <span class="random-list-channels" tooltip="Перемешать список каналов в случайном порядке." flow="left">Рандомизировать</span>
+        </div>
+        <div class="action-pars-list-edit-channels">
+          <span>
+            <i class="fa fa-eraser"></i>
+            <vgr translate="Remove" translate2="retirar">Удалить</vgr>
+          </span>
+        </div>
+        <div class="save-btn-pars-list-edit-channels">
+          <span>
+            <i class="fa fa-save"></i>
+            <vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+          </span>
+        </div>
+        <div class="action-get-channels-to-pars-list" style="margin-top: 10px;font-size: 18px;">
+        	<span>
+        		<i class="fa fa-times-circle"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+        	</span>
+        	<span style="float: right;">
+        		<i class="fa fa-copy"></i>
+        		<vgr translate="Copy" translate2="Dupdo">Скопировать</vgr>
+        	</span>
+        </div>
+      </div>
+    </div>
+    <textarea id="_hiddenCopyText__1" style="opacity: 0;margin-top: 0;height: 0;top: 0;position: absolute;"></textarea>
+  </div>
+</div>
+
+<div id="modal-delete-pars-list" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Delete user list" translate2="Eliminar lista de usuarios">Удаление списка пользователей</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="count-users">
+      		<vgr translate="Total" translate2="Total">Всего</vgr> - <v></v>
+      	</div>
+      	<div class="buttons">
+	  			<div class="btn-modals waves-effect" data-dismiss="modal">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect">
+	  				<i class="fa fa-trash-alt"></i>
+	  				<vgr translate="Delete" translate2="Borrar">Удалить</vgr>
+	  			</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-edit-invites" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Invites editing" translate2="Invita a editar">Редактирование инвайтов</h4>
+      </div>
+      <div class="modal-body">
+				<div id="edit-block-invites">
+					<textarea name="name"></textarea>
+				</div>
+      	<div class="count-invites">
+      		<vgr translate="Total" translate2="Total">Всего</vgr> - <v>0</v>
+      	</div>
+      	<div class="buttons">
+	  			<div class="btn-modals waves-effect" data-dismiss="modal">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect" id="save-new-invites-for-pars">
+	  				<i class="fa fa-save"></i>
+	  				<vgr translate="Save" translate2="Guardar">Сохранить</vgr>
+	  			</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-edit-black-servers" class="modal fade scrol-web" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title" translate="Invites editing" translate2="Invita a editar">Редактирование инвайтов</h4>
+      </div>
+      <div class="modal-body">
+				<div id="edit-block-black-servers">
+					<textarea name="name"></textarea>
+				</div>
+      	<div class="count-invites">
+      		<vgr translate="Total" translate2="Total">Всего</vgr> - <v>0</v>
+      	</div>
+      	<div class="buttons">
+	  			<div class="btn-modals waves-effect" data-dismiss="modal">
+	  				<i class="fa fa-undo-alt"></i>
+	  				<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+	  			</div>
+	  			<div class="btn-modals waves-effect" id="save-new-black-servers">
+	  				<i class="fa fa-save"></i>
+	  				<vgr translate="Save" translate2="Guardar">Сохранить</vgr>
+	  			</div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="modal-edit-roles-list" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Editing a role list" translate2="Edición de una lista de roles">
+					Редактирование списка ролей</h4>
+			</div>
+			<div class="modal-body">
+				<div class="search-roles form">
+					<input type="text" placeholder="Поиск..." translate="Search..." translate2="Buscar...">
+				</div>
+				<div class="copy-roles-pars">
+					<textarea readonly></textarea>
+				</div>
+				<div class="list-roles scrol-web"></div>
+				<div class="count-roles-list-edit-checkbox"
+					style="margin-top: 10px; font-size: 18px; display: block; opacity: 1; height: 50px;">
+					<span>Выделено: 0</span>
+					<span style="display: block;">Всего: 100</span>
+				</div>
+				<span id="select-all-pars-roles">Выделить всё</span>
+				<div class="action-roles-list-edit-checkbox" style="margin-top: 10px;font-size: 18px;">
+					<span style="float: right;" flow="left">
+						<vgr translate="Copy entire list" translate2="Copiar lista completa">Скопировать весь список
+						</vgr>
+					</span>
+					<span translate="Remove selection" translate2="Eliminar selección">Убрать выделения</span>
+				</div>
+				<div class="action-roles-list-edit">
+					<span style="opacity: 1;">
+						<i class="fa fa-user-slash"></i>
+						<vgr translate="Remove" translate2="retirar">Удалить</vgr>
+					</span>
+				</div>
+				<div class="save-btn-roles-list-edit">
+					<span style="opacity: 1;">
+						<i style="margin-right: 3px;" class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Salvar">Сохранить</vgr>
+					</span>
+				</div>
+				<div class="go-back-btn-roles-list-edit">
+					<span style="opacity: 1;">
+						<i style="margin-right: 3px;" class="fa fa-undo"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="users-activity-settings" class="modal fade scrol-web" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">x</button>
+				<h4 class="modal-title" translate="Game List Editing" translate2="Edición de la lista de juegos">Редактирование списка игр</h4>
+			</div>
+			<div class="modal-body">
+				<div>
+					<textarea id="users-activity-settings-input"></textarea>
+				</div>
+				<div class="buttons buttons-modal" style="margin-top: 20px;">
+					<div class="btn-modals waves-effect" onclick="$('.modal').modal('hide');">
+						<i class="fa fa-undo-alt"></i>
+						<vgr translate="Cancel" translate2="Cancelar">Отмена</vgr>
+					</div>
+					<div class="btn-modals waves-effect" id="save-users-activity-settings">
+						<i class="fa fa-save"></i>
+						<vgr translate="Save" translate2="Guardar">Сохранить</vgr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
