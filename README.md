@@ -1,3 +1,4 @@
 Повеселиться.
 Устанавливайте все сами, я помогать не буду.
-![Screen] (https://skr.sh/i/180623/Cf54sa6v.jpg)
+-----
+![one_dash_discord]  (https://github.com/moneyrobot2023/OneDash-nulled-2023/blob/master/maxresdefault.jpg)
